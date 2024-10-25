@@ -1,5 +1,5 @@
-// var corsAttr = new EnableCorsAttribute("*", "*", "*");
-// config.EnableCors(corsAttr);
+var corsAttr = new EnableCorsAttribute("*", "*", "*");
+config.EnableCors(corsAttr);
 
 var model;
 const body = document.getElementsByTagName("body");
