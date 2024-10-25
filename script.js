@@ -1,5 +1,5 @@
-var corsAttr = new EnableCorsAttribute("*", "*", "*");
-config.EnableCors(corsAttr);
+// var corsAttr = new EnableCorsAttribute("*", "*", "*");
+// config.EnableCors(corsAttr);
 
 var model;
 const body = document.getElementsByTagName("body");
@@ -134,7 +134,7 @@ async function get_ripeness() {
     }
 
     tensor_img = tf.div(tf.tensor(img_arr), 255);
-    ripe_val = sigmoid(model.predict(tensor_img.reshape([1, 64, 64, 3])).dataSync()[0], 4, 0.25);
+    ripe_val = model.predict(tensor_img.reshape([1, 64, 64, 3])).dataSync()[0];
     console.log(ripe_val);
 
     cur_thresh = parseFloat(thresh_label.innerHTML);
