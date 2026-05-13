@@ -13,38 +13,39 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 2px;
+	overflow: hidden;
 }
 
 main {
 	display: grid;
-	grid-template-columns: 1fr 2fr;
+	grid-template-columns: 120fr 120fr;
 	flex: 1;
 	height: 1000px;
+	overflow: hidden;
 }
 
 .side {
 	display: grid;
 	height: 100%;
+	overflow: hidden;
 }
 
 #left {
-	grid-template-rows: 1fr 1fr;
+	grid-template-rows: 120fr 120fr;
 }
 
 #right {
-	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-rows: 80fr 80fr 80fr;
 }
 
 .window {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	min-height: 0;
-	min-width: 0;
-	overflow: scroll;
+	overflow: hidden;
 }
 
-.window:hover .windowbar {
+.window:hover .windowbar:not(.desel) {
 	background: rgb(40, 85, 119);
 	border-color: rgb(76, 120, 153);
 	color: white;
@@ -54,9 +55,14 @@ main {
 	border-color: rgb(40, 85, 119);
 }
 
+.windowbartabs {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
 .windowbar {
 	width: 100%;
-	height: 26px;
+	height: 24px;
 	align-content: center;
 	background: rgb(34, 34, 34);
 	border: solid 1px rgb(51, 51, 51);
@@ -64,6 +70,7 @@ main {
 	font-size: 13px;
 	padding-left: 4px;
 	box-sizing: border-box;
+	flex-shrink: 0;
 }
 
 .windowcontent {
@@ -72,14 +79,15 @@ main {
 	flex-grow: 1;
 	color: white;
 	padding: 4px;
-	overflow: scroll;
-	min-height: 0;
-	min-width: 0;
+	overflow: auto;
 }
 
 #topbar {
 	height: 22px;
 	width: 100%;
+	display: flex;
+	color: white;
+	font-size: 13px;
 }
 
 #workspace {
@@ -89,6 +97,9 @@ main {
 	align-content: center;
 	background: rgb(40, 85, 119);
 	border: solid 1px rgb(76, 120, 153);
-	color: white;
-	font-size: 13px;
+}
+
+#timestr {
+	margin: 0 4px 0 auto;
+	align-content: center;
 }

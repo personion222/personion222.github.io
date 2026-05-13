@@ -10,16 +10,20 @@
 			<div id="workspace">
 				1
 			</div>
+			<p id="timestr" />
 		</div>
-		<main>
-			<div class="side" id="left">
+		<main style="grid-template-columns: 80fr 160fr">
+			<div class="side" id="left" style="grid-template-rows: 120fr 120fr">
 				<div class="window">
-					<div class="windowbar">
-						about me
+					<div class="windowbartabs">
+						<div class="windowbar" id="whoami">
+							whoami
+						</div>
+						<div class="windowbar desel" id="asdf">
+							asdf
+						</div>
 					</div>
-					<div class="windowcontent">
-						very cool :3
-					</div>
+					<div class="windowcontent"></div>
 				</div>
 				<div class="window">
 					<div class="windowbar">
@@ -30,7 +34,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="side" id="right">
+			<div class="side" id="right" style="grid-template-rows: 80fr 80fr 80fr">
 				<div class="window">
 					<div class="windowbar">
 						about me
@@ -83,4 +87,10 @@
 		</main>
 		<script type="module" src="/src/main.js"></script>
 	</body>
+	<template id="whoamicont">
+		i have no clue vro
+	</template>
+	<template id="asdfcont">
+		ghjkl;
+	</template>
 </html>
