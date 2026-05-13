@@ -3,93 +3,65 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=7372ed273fea4864a541a1143cefe976"></script>
 		<title>personal-website</title>
 	</head>
 	<body>
 		<div id="topbar">
-			<div id="workspace">
-				1
-			</div>
+			<div id="workspace">1</div>
+			<p id="title">dev portfolio: ananth arunkumar (personion222)</p>
 			<p id="timestr" />
 		</div>
-		<main style="grid-template-columns: 80fr 160fr">
+
+		<main style="grid-template-columns: 120fr 120fr">
 			<div class="side" id="left" style="grid-template-rows: 120fr 120fr">
 				<div class="window">
 					<div class="windowbartabs">
-						<div class="windowbar" id="whoami">
-							whoami
-						</div>
-						<div class="windowbar desel" id="asdf">
-							asdf
-						</div>
+						<div class="windowbar" id="whoami">whoami</div>
+						<div class="windowbar desel" id="asdf">contact</div>
 					</div>
 					<div class="windowcontent"></div>
 				</div>
+
 				<div class="window">
-					<div class="windowbar">
-						about me
-					</div>
+					<div class="windowbar">projects</div>
 					<div class="windowcontent">
 						very cool owo
 					</div>
 				</div>
 			</div>
-			<div class="side" id="right" style="grid-template-rows: 80fr 80fr 80fr">
+
+			<div class="side" id="right" style="grid-template-rows: 60fr 120fr 60fr">
 				<div class="window">
-					<div class="windowbar">
-						about me
-					</div>
+					<div class="windowbar">about me</div>
 					<div class="windowcontent">
 						very cool &gt;~&lt;
 					</div>
 				</div>
+
 				<div class="window">
-					<div class="windowbar">
-						about me
-					</div>
+					<div class="windowbar">desmos !!</div>
 					<div class="windowcontent">
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
-						very cool :O <br>
+						<div id="calculator"></div>
 					</div>
 				</div>
+
 				<div class="window">
-					<div class="windowbar">
-						about me
-					</div>
+					<div class="windowbar">about this site</div>
 					<div class="windowcontent">
 						very cool uwu
 					</div>
 				</div>
 			</div>
 		</main>
+
 		<script type="module" src="/src/main.js"></script>
 	</body>
+
 	<template id="whoamicont">
 		i have no clue vro
 	</template>
+
 	<template id="asdfcont">
 		ghjkl;
 	</template>

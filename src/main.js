@@ -8,57 +8,60 @@ const timestr = document.getElementById("timestr");
 add_template(document.getElementById("whoami").parentElement.parentElement.getElementsByClassName("windowcontent")[0], "whoamicont");
 update_time();
 setInterval(update_time, 1000);
+var elt = document.getElementById("calculator");
+var calculator = Desmos.GraphingCalculator(elt);
 
 addEventListener("keydown", (event) => {
-	let sel_window = document.querySelector(".window:hover");
-	if (sel_window) {
-		let side = sel_window.parentElement;
-		let row_index = Array.from(side.children).indexOf(sel_window);
-		let col_index = Array.from(main_el.children).indexOf(side);
+	console.log(event.key);
+	if (event.shiftKey) {
+		let sel_window = document.querySelector(".window:hover");
+		if (sel_window) {
+			let side = sel_window.parentElement;
+			let row_index = Array.from(side.children).indexOf(sel_window);
+			let col_index = Array.from(main_el.children).indexOf(side);
 
-		if (event.key == "ArrowUp") {
-			let grid_nums_str = side.style.gridTemplateRows.split(' ');
-			let grid_nums = grid_nums_str.map((numstr) => {
-				return Number(numstr.substring(0, numstr.length - 2)) + resize_rate / (grid_nums_str.length - 1);
-			});
-			grid_nums[row_index] = grid_nums[row_index] - resize_rate / (grid_nums_str.length - 1) - resize_rate;
-			if (grid_nums.every((v) => min_size < v && v < max_size)) {
-				side.style.gridTemplateRows = grid_nums.join("fr ") + "fr";
+			if (event.key == "ArrowUp") {
+				let grid_nums_str = side.style.gridTemplateRows.split(' ');
+				let grid_nums = grid_nums_str.map((numstr) => {
+					return Number(numstr.substring(0, numstr.length - 2)) + resize_rate / (grid_nums_str.length - 1);
+				});
+				grid_nums[row_index] = grid_nums[row_index] - resize_rate / (grid_nums_str.length - 1) - resize_rate;
+				if (grid_nums.every((v) => min_size < v && v < max_size)) {
+					side.style.gridTemplateRows = grid_nums.join("fr ") + "fr";
+				}
 			}
-		}
 
-		if (event.key == "ArrowDown") {
-			let grid_nums_str = side.style.gridTemplateRows.split(' ');
-			let grid_nums = grid_nums_str.map((numstr) => {
-				return Number(numstr.substring(0, numstr.length - 2)) - resize_rate / (grid_nums_str.length - 1);
-			});
-			grid_nums[row_index] = grid_nums[row_index] + resize_rate / (grid_nums_str.length - 1) + resize_rate;
-			if (grid_nums.every((v) => min_size < v && v < max_size)) {
-				side.style.gridTemplateRows = grid_nums.join("fr ") + "fr";
+			if (event.key == "ArrowDown") {
+				let grid_nums_str = side.style.gridTemplateRows.split(' ');
+				let grid_nums = grid_nums_str.map((numstr) => {
+					return Number(numstr.substring(0, numstr.length - 2)) - resize_rate / (grid_nums_str.length - 1);
+				});
+				grid_nums[row_index] = grid_nums[row_index] + resize_rate / (grid_nums_str.length - 1) + resize_rate;
+				if (grid_nums.every((v) => min_size < v && v < max_size)) {
+					side.style.gridTemplateRows = grid_nums.join("fr ") + "fr";
+				}
 			}
-		}
 
-		if (event.key == "ArrowLeft") {
-			let grid_nums_str = main_el.style.gridTemplateColumns.split(' ');
-			console.log(main_el);
-			let grid_nums = grid_nums_str.map((numstr) => {
-				return Number(numstr.substring(0, numstr.length - 2)) + resize_rate / (grid_nums_str.length - 1);
-			});
-			grid_nums[col_index] = grid_nums[col_index] - resize_rate / (grid_nums_str.length - 1) - resize_rate;
-			if (grid_nums.every((v) => min_size < v && v < max_size)) {
-				main_el.style.gridTemplateColumns = grid_nums.join("fr ") + "fr";
+			if (event.key == "ArrowLeft") {
+				let grid_nums_str = main_el.style.gridTemplateColumns.split(' ');
+				let grid_nums = grid_nums_str.map((numstr) => {
+					return Number(numstr.substring(0, numstr.length - 2)) + resize_rate / (grid_nums_str.length - 1);
+				});
+				grid_nums[col_index] = grid_nums[col_index] - resize_rate / (grid_nums_str.length - 1) - resize_rate;
+				if (grid_nums.every((v) => min_size < v && v < max_size)) {
+					main_el.style.gridTemplateColumns = grid_nums.join("fr ") + "fr";
+				}
 			}
-		}
 
-		if (event.key == "ArrowRight") {
-			let grid_nums_str = main_el.style.gridTemplateColumns.split(' ');
-			console.log(main_el);
-			let grid_nums = grid_nums_str.map((numstr) => {
-				return Number(numstr.substring(0, numstr.length - 2)) - resize_rate / (grid_nums_str.length - 1);
-			});
-			grid_nums[col_index] = grid_nums[col_index] + resize_rate / (grid_nums_str.length - 1) + resize_rate;
-			if (grid_nums.every((v) => min_size < v && v < max_size)) {
-				main_el.style.gridTemplateColumns = grid_nums.join("fr ") + "fr";
+			if (event.key == "ArrowRight") {
+				let grid_nums_str = main_el.style.gridTemplateColumns.split(' ');
+				let grid_nums = grid_nums_str.map((numstr) => {
+					return Number(numstr.substring(0, numstr.length - 2)) - resize_rate / (grid_nums_str.length - 1);
+				});
+				grid_nums[col_index] = grid_nums[col_index] + resize_rate / (grid_nums_str.length - 1) + resize_rate;
+				if (grid_nums.every((v) => min_size < v && v < max_size)) {
+					main_el.style.gridTemplateColumns = grid_nums.join("fr ") + "fr";
+				}
 			}
 		}
 	}
@@ -98,5 +101,5 @@ function add_template(pos, temp) {
 
 function update_time() {
 	let date = new Date();
-	timestr.textContent = date.toLocaleString("en-GB", {timeZone: "America/New_York"});
+	timestr.textContent = `my local time: ${date.toLocaleString("en-GB", {timeZone: "America/New_York"})} (America/New_York)`;
 }
