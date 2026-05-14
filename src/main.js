@@ -5,11 +5,27 @@ const min_size = 20;
 const max_size = 220;
 const main_el = document.querySelector("main");
 const timestr = document.getElementById("timestr");
+
 add_template(document.getElementById("whoami").parentElement.parentElement.getElementsByClassName("windowcontent")[0], "whoamicont");
+add_template(document.getElementById("site").parentElement.parentElement.getElementsByClassName("windowcontent")[0], "sitecont");
+
 update_time();
 setInterval(update_time, 1000);
+
 var elt = document.getElementById("calculator");
 var calculator = Desmos.GraphingCalculator(elt);
+fetch("./src/assets/calcstate.json").then((response) => {
+	return response.json();
+}).then((data) => {
+	console.log(data);
+	calculator.setState(data);
+})
+
+var viewer = OpenSeadragon({
+	id: "openseadragon",
+	prefixUrl: "./src/openseadragon/images/",
+	tileSources: "./public/dzi/IMG_1661.dzi"
+});
 
 addEventListener("keydown", (event) => {
 	console.log(event.key);
@@ -83,6 +99,22 @@ document.getElementById("asdf").onmouseover = () => {
 	}
 }
 
+document.getElementById("site").onmouseover = () => {
+	if (event.target.classList.contains("desel")) {
+		change_sel(event.target);
+		event.target.classList.remove("desel");
+		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "sitecont");
+	}
+}
+
+document.getElementById("8831").onmouseover = () => {
+	if (event.target.classList.contains("desel")) {
+		change_sel(event.target);
+		event.target.classList.remove("desel");
+		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "8831cont");
+	}
+}
+
 function change_sel(element) {
 	let children = element.parentElement.children
 	for (let i = 0; i < children.length; i++) {
@@ -101,5 +133,5 @@ function add_template(pos, temp) {
 
 function update_time() {
 	let date = new Date();
-	timestr.textContent = `my local time: ${date.toLocaleString("en-GB", {timeZone: "America/New_York"})} (America/New_York)`;
+	timestr.textContent = `my local time: ${date.toLocaleString("en-GB", {timeZone: "America/Toronto"})} (America/Toronto)`;
 }

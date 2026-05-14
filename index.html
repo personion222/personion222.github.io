@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=7372ed273fea4864a541a1143cefe976"></script>
+		<script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
 		<title>personal-website</title>
 	</head>
 	<body>
@@ -13,30 +14,14 @@
 			<p id="timestr" />
 		</div>
 
-		<main style="grid-template-columns: 120fr 120fr">
-			<div class="side" id="left" style="grid-template-rows: 120fr 120fr">
+		<main style="grid-template-columns: 110fr 130fr">
+			<div class="side" id="left" style="grid-template-rows: 90fr 110fr 40fr">
 				<div class="window">
 					<div class="windowbartabs">
 						<div class="windowbar" id="whoami">whoami</div>
 						<div class="windowbar desel" id="asdf">contact</div>
 					</div>
 					<div class="windowcontent"></div>
-				</div>
-
-				<div class="window">
-					<div class="windowbar">projects</div>
-					<div class="windowcontent">
-						very cool owo
-					</div>
-				</div>
-			</div>
-
-			<div class="side" id="right" style="grid-template-rows: 60fr 120fr 60fr">
-				<div class="window">
-					<div class="windowbar">about me</div>
-					<div class="windowcontent">
-						very cool &gt;~&lt;
-					</div>
 				</div>
 
 				<div class="window">
@@ -47,14 +32,38 @@
 				</div>
 
 				<div class="window">
-					<div class="windowbar">about this site</div>
+					<div class="windowbartabs">
+						<div class="windowbar" id="site">about this site</div>
+						<div class="windowbar desel" id="8831">friends (88x31)</div>
+					</div>
+					<div class="windowcontent"></div>
+				</div>
+			</div>
+
+			<div class="side" id="right" style="grid-template-rows: 140fr 100fr">
+				<div class="window">
+					<div class="windowbar">eye of GNOME</div>
 					<div class="windowcontent">
-						very cool uwu
+						<div id="openseadragon"></div>
+					</div>
+				</div>
+
+				<div class="window">
+					<div class="windowbar">projects</div>
+					<div class="windowcontent">
+						very cool owo
 					</div>
 				</div>
 			</div>
 		</main>
 
+		<!--<script type="text/javascript">
+			var viewer = OpenSeadragon({
+				id: "openseadragon",
+				// prefixUrl: "/openseadragon/images/",
+				tileSources: "./assets/images/dzi/IMG_1661.dzi"
+			});
+		</script>-->
 		<script type="module" src="/src/main.js"></script>
 	</body>
 
@@ -64,5 +73,13 @@
 
 	<template id="asdfcont">
 		ghjkl;
+	</template>
+
+	<template id="sitecont">
+		looks like swaywm, thats abt it thx for coming to my ted talk
+	</template>
+
+	<template id="8831cont">
+		cool lookin buttons
 	</template>
 </html>
