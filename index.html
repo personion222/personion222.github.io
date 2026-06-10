@@ -4,28 +4,29 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=7372ed273fea4864a541a1143cefe976"></script>
-		<script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
-		<title>personal-website</title>
+		<script src="/src/openseadragon/openseadragon.min.js"></script>
+		<script type="module" src="/src/main.js"></script>
+		<title>personion222's dev portfolio'</title>
 	</head>
 	<body>
 		<div id="topbar">
 			<div id="workspace">1</div>
-			<p id="title">dev portfolio: ananth arunkumar (personion222)</p>
+			<p id="title">personion222's desktop</p>
 			<p id="timestr" />
 		</div>
 
-		<main style="grid-template-columns: 110fr 130fr">
-			<div class="side" id="left" style="grid-template-rows: 90fr 110fr 40fr">
+		<main style="grid-template-columns: 90fr 150fr">
+			<div class="side" id="left" style="grid-template-rows: 80fr 120fr 40fr">
 				<div class="window">
 					<div class="windowbartabs">
-						<div class="windowbar" id="whoami">whoami</div>
-						<div class="windowbar desel" id="asdf">contact</div>
+						<div class="windowbar" id="whoami">Ghostty (whoami)</div>
+						<div class="windowbar desel" id="contact">elsewhere on the interwebs</div>
 					</div>
 					<div class="windowcontent"></div>
 				</div>
 
 				<div class="window">
-					<div class="windowbar">desmos !!</div>
+					<div class="windowbar">desmos !! - Firefox</div>
 					<div class="windowcontent">
 						<div id="calculator"></div>
 					</div>
@@ -34,7 +35,7 @@
 				<div class="window">
 					<div class="windowbartabs">
 						<div class="windowbar" id="site">about this site</div>
-						<div class="windowbar desel" id="8831">friends (88x31)</div>
+						<div class="windowbar desel" id="8831">buttons (88x31)</div>
 					</div>
 					<div class="windowcontent"></div>
 				</div>
@@ -44,7 +45,34 @@
 				<div class="window">
 					<div class="windowbar">eye of GNOME</div>
 					<div class="windowcontent">
-						<div id="openseadragon"></div>
+						<div id="eogwin">
+							<div id="osdcontainer">
+								<div class="openseadragon" id="openseadragon"></div>
+								<div id="btncontainer">
+									<button class="navbtn" id="bckbtn">&lt;</button>
+									<button class="navbtn" id="fwdbtn">&gt;</button>
+								</div>
+							</div>
+
+							<div>
+								<p id="proptxt">Properties</p>
+								<div id="eogexif">
+									<div id="eogexifkey">
+										Download<br>
+										Aperture<br>
+										Exposure<br>
+										Focal Length<br>
+										ISO<br>
+										Make<br>
+										Model<br>
+										Date<br>
+										Time<br>
+										Location<br>
+									</div>
+									<div id="eogexifval"></div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -64,22 +92,74 @@
 				tileSources: "./assets/images/dzi/IMG_1661.dzi"
 			});
 		</script>-->
-		<script type="module" src="/src/main.js"></script>
 	</body>
 
-	<template id="whoamicont">
-		i have no clue vro (change!!)
+	<template id="whoamitemp">
+		<div id="term">
+			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ whoami<br>
+			personion<br>
+			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ neofetch<br>
+			<div id="fetchcont">
+				<img src="./src/assets/Untitled_Artwork.png" id="pfp">
+				<p id="fetchtxt">
+					personion@onion-web<br>
+					-------------------<br>
+					Name: Ananth Arunkumar<br>
+					Email: ananth2.718 (at) gmail (dot) com<br>
+					Resume: download<br>
+					Location: Ontario, Canada<br>
+				</p>
+			</div>
+			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ glow README.md<br>
+			# I'm Ananth, a high school student based in Canada who loves building, creating, and designing!
+		</div>
 	</template>
 
-	<template id="asdfcont">
-		ghjkl;
+	<template id="contacttemp">
+		<div id="contactcont">
+			<div class="linkbox">
+				<img src="./src/assets/itch.png" class="linkimg padlogo">
+				<div class="linkdesc">
+					my games on my <b>itch.io page</b> @ <a href="https://personion.itch.io/" target="_blank">personion.itch.io</a>
+					<hr>
+					over <b>10k views</b> and <b>4k plays/downloads</b>
+				</div>
+			</div>
+
+			<div class="linkbox">
+				<img src="./src/assets/github.png" class="linkimg">
+				<div class="linkdesc">
+					<b>github profile</b> @ <a href="https://github.com/personion222/" target="_blank">github.com/personion222</a>
+					<hr>
+					you can find my <b>open-source</b> projects here
+				</div>
+			</div>
+
+			<div class="linkbox">
+				<img src="./src/assets/devpost.png" class="linkimg">
+				<div class="linkdesc">
+					<b>devpost</b> @ <a href="https://devpost.com/ananth2-718" target="_blank">devpost.com/ananth2-718</a>
+					<hr>
+					these are some of my past <b>hackathon</b> projects
+				</div>
+			</div>
+
+			<div class="linkbox">
+				<img src="./src/assets/linkedin.png" class="linkimg padlogo">
+				<div class="linkdesc">
+					<b>linkedin</b> @ <a href="https://www.linkedin.com/in/ananth-arunkumar-794291310/" target="_blank">linkedin.com/in/ananth-arunkumar/794291310</a>
+					<hr>
+					connect with me on linkedin!
+				</div>
+			</div>
+		</div>
 	</template>
 
-	<template id="sitecont">
+	<template id="sitetemp">
 		looks like swaywm, thats abt it thx for coming to my ted talk
 	</template>
 
-	<template id="8831cont">
+	<template id="8831temp">
 		cool lookin buttons
 	</template>
 </html>

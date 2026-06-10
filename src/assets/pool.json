@@ -1,0 +1,1352 @@
+{
+  "version": 11,
+  "randomSeed": "4194a1fce8acf8915d53ff494377bb99",
+  "graph": {
+    "viewport": {
+      "xmin": -10,
+      "ymin": -12.133123689727462,
+      "xmax": 10,
+      "ymax": 12.133123689727462
+    },
+    "userLockedViewport": true,
+    "__v12ViewportLatexStash": {
+      "xmin": "-10",
+      "xmax": "10",
+      "ymin": "-12.133123689727462",
+      "ymax": "12.133123689727462"
+    }
+  },
+  "expressions": {
+    "list": [
+      {
+        "type": "text",
+        "id": "580",
+        "text": "https://www.desmos.com/calculator/saputpokee"
+      },
+      {
+        "type": "text",
+        "id": "498",
+        "text": "This is my submission to the 2024 art expo! It's a fully playable (but a little simplified to improve performance) game of 8 ball complete with elastic collision."
+      },
+      {
+        "type": "text",
+        "id": "501",
+        "text": "I do a lot of programming in my free time, and I'm working on my math skills to prepare for high school. I saw that the art expo was coming up and this was the perfect excuse to create a detailed physics simulation and do two things that I love doing - math and programming. So, I decided to make this pool table! It's a very fun strategy based game that requires a mix of mental and physical capability, which I find a very interesting dynamic."
+      },
+      {
+        "type": "text",
+        "id": "503",
+        "text": "To play, start the ticker, then move the cuestick by dragging the tip. Once you have aimed your shot, click the \"Launch\" button. After all the balls settle, you can play another round."
+      },
+      {
+        "type": "text",
+        "id": "505",
+        "text": "You can find full BCA Pool League rules here: https://www.playcsipool.com/bcapl-rules.html"
+      },
+      {
+        "type": "text",
+        "id": "506",
+        "text": "The pool table is also made to match the regulation as close as I could."
+      },
+      {
+        "type": "text",
+        "id": "507",
+        "text": "~~~~~~~~~~~~~~~~~Have fun :D~~~~~~~~~~~~~~~~~"
+      },
+      {
+        "type": "text",
+        "id": "521",
+        "text": "(If it's running slow, try turning off shadows)"
+      },
+      {
+        "type": "expression",
+        "id": "461",
+        "color": "#c74440",
+        "latex": "s_{hadows}=1",
+        "slider": {
+          "hardMin": true,
+          "hardMax": true,
+          "min": "0",
+          "max": "1",
+          "step": "1"
+        }
+      },
+      {
+        "type": "text",
+        "id": "524",
+        "text": "⚠️ math ahead 😱"
+      },
+      {
+        "type": "text",
+        "id": "574",
+        "text": "launch launches the cue ball based on the position of the cuestick."
+      },
+      {
+        "type": "expression",
+        "id": "382",
+        "color": "#2d70b3",
+        "latex": "l_{aunch}=\\left\\{c_{anlaunch}<l_{aunchspeed}:c_{uevel}\\to c_{uevel}+\\frac{c_{ue}-s_{tick}}{\\left|c_{ue}-s_{tick}\\right|}\\sqrt{\\left|c_{ue}-s_{tick}\\right|}p_{ower}\\right\\}"
+      },
+      {
+        "type": "text",
+        "id": "575",
+        "text": "Reset all of the positions, velocities, etc."
+      },
+      {
+        "type": "expression",
+        "id": "81",
+        "color": "#6042a6",
+        "latex": "r_{eset}=c_{ue}\\to h_{ead},b_{allpos}\\to p_{ositions},v_{els}\\to z_{erovels},c_{uevel}\\to\\left(0,0\\right),v_{isible}\\to\\left[1\\operatorname{for}i=\\left[1...16\\right]\\right]"
+      },
+      {
+        "type": "text",
+        "id": "576",
+        "text": "A tick function that updates the positions and velocities of the balls."
+      },
+      {
+        "type": "expression",
+        "id": "121",
+        "color": "#c74440",
+        "latex": "t_{ick}=\\left\\{t_{icktype}=0:u_{pdatepos},u_{pdatevel}\\right\\},\\left\\{t_{icktype}=0:t_{icktype}\\to1,t_{icktype}\\to0\\right\\},\\left\\{t_{icktype}=1:u_{pdatevisible}\\right\\}"
+      },
+      {
+        "type": "text",
+        "id": "577",
+        "text": "An invisible point that serves as the root of the cuestick"
+      },
+      {
+        "type": "expression",
+        "id": "133",
+        "color": "#000000",
+        "latex": "s_{tick}=\\left(-5.06,0.75\\right)",
+        "dragMode": "XY",
+        "pointOpacity": "0",
+        "pointSize": "20",
+        "movablePointSize": "20"
+      },
+      {
+        "type": "folder",
+        "id": "397",
+        "title": "Render Functions",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "509",
+        "folderId": "397",
+        "text": "Functions used for rendering"
+      },
+      {
+        "type": "text",
+        "id": "511",
+        "folderId": "397",
+        "text": "drawball is used to draw a ball at a position, and take into account if that ball is not pocketed pocketed"
+      },
+      {
+        "type": "expression",
+        "id": "82",
+        "folderId": "397",
+        "color": "#000000",
+        "latex": "d_{rawball}\\left(p_{os},v\\right)=\\left\\{v=1:\\left(x-p_{os}.x\\right)^{2}+\\left(y-p_{os}.y\\right)^{2}-b_{all}^{2}\\right\\}"
+      },
+      {
+        "type": "text",
+        "id": "512",
+        "folderId": "397",
+        "text": "drawstripe is used to draw a ball at a position, and take into account if that ball is not pocketed pocketed"
+      },
+      {
+        "type": "expression",
+        "id": "410",
+        "folderId": "397",
+        "color": "#388c46",
+        "latex": "d_{rawstripe}\\left(p_{os},s_{v},v\\right)=\\left\\{v+s_{v}=2:\\left\\{\\left|y-p_{os}.y\\right|>s_{tripesize}s:\\left(x-p_{os}.x\\right)^{2}+\\left(y-p_{os}.y\\right)^{2}-b_{all}^{2},1\\right\\}\\right\\}"
+      },
+      {
+        "type": "text",
+        "id": "514",
+        "folderId": "397",
+        "text": "circle is a general function to draw a circle at a point with a radius"
+      },
+      {
+        "type": "expression",
+        "id": "418",
+        "folderId": "397",
+        "color": "#6042a6",
+        "latex": "c_{ircle}\\left(p_{os},r_{adius}\\right)=\\left(x-p_{os}.x\\right)^{2}+\\left(y-p_{os}.y\\right)^{2}-r_{adius}^{2}"
+      },
+      {
+        "type": "folder",
+        "id": "393",
+        "title": "Simulation Parameters",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "516",
+        "folderId": "393",
+        "text": "Some parameters that affect the simulation as well as other static numbers."
+      },
+      {
+        "type": "text",
+        "id": "570",
+        "folderId": "393",
+        "text": "power: the power multiplier for a shot.\nwallcr: the coefficient of restitution (bounciness) for walls.\nballcr: the coefficient of restitution for 2 balls.\nfriction: a friction multiplier that slowly reduces the velocity each timestep.\nlaunchspeed: the minimum scalar speed the fastest ball can be traveling at to complete another shot."
+      },
+      {
+        "type": "text",
+        "id": "572",
+        "folderId": "393",
+        "text": "After that there's a whole bunch of sizes, and then there's:"
+      },
+      {
+        "type": "text",
+        "id": "573",
+        "folderId": "393",
+        "text": "s: the scaling factor from inches to Desmos screen units.\nstart: the starting point of the playing field (bottom left).\nend: the ending point (top right).\nfoot: the foot of the table, where the first ball is placed (right).\nhead: the head of the table, where the cue is placed (left).\nballidx: an array of all the ball indices.\npositions: an array of the default ball positions to reset to.\nzerovels: an array of velocities set to (0,0) to reset the balls velocities to.\nstripe: an array of ones and zeros representing which balls have stripes.\nstripesize: the size of the stripes.\npocketpos: an array of the positions of the pockets on the board.\npocketsize: the diameter of the pockets."
+      },
+      {
+        "type": "expression",
+        "id": "460",
+        "folderId": "393",
+        "color": "#2d70b3",
+        "latex": "p_{ower}=0.3"
+      },
+      {
+        "type": "expression",
+        "id": "135",
+        "folderId": "393",
+        "color": "#000000",
+        "latex": "w_{allcr}=0.98",
+        "slider": {
+          "hardMin": true,
+          "hardMax": true,
+          "min": "0.95",
+          "max": "1",
+          "step": "0.001"
+        }
+      },
+      {
+        "type": "expression",
+        "id": "136",
+        "folderId": "393",
+        "color": "#c74440",
+        "latex": "b_{allcr}=0.93"
+      },
+      {
+        "type": "expression",
+        "id": "125",
+        "folderId": "393",
+        "color": "#000000",
+        "latex": "f_{riction}=0.97",
+        "hidden": true,
+        "slider": {
+          "hardMax": true,
+          "max": "1",
+          "step": "0.001"
+        }
+      },
+      {
+        "type": "expression",
+        "id": "444",
+        "folderId": "393",
+        "color": "#388c46",
+        "latex": "l_{aunchspeed}=0.05",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "76",
+        "folderId": "393",
+        "color": "#6042a6",
+        "latex": "b_{all}=\\frac{2.25s}{2}"
+      },
+      {
+        "type": "expression",
+        "id": "439",
+        "folderId": "393",
+        "color": "#388c46",
+        "latex": "s_{ticklen}=57s"
+      },
+      {
+        "type": "expression",
+        "id": "470",
+        "folderId": "393",
+        "color": "#2d70b3",
+        "latex": "s_{tickendlen}=2s"
+      },
+      {
+        "type": "expression",
+        "id": "440",
+        "folderId": "393",
+        "color": "#6042a6",
+        "latex": "s_{tickwidthend}=1.2s"
+      },
+      {
+        "type": "expression",
+        "id": "441",
+        "folderId": "393",
+        "color": "#000000",
+        "latex": "s_{tickwidthstart}=2.4s"
+      },
+      {
+        "type": "expression",
+        "id": "64",
+        "folderId": "393",
+        "color": "#c74440",
+        "latex": "s=0.125",
+        "slider": {
+          "hardMax": true,
+          "playDirection": -1,
+          "max": "0.15",
+          "step": "0"
+        }
+      },
+      {
+        "type": "expression",
+        "id": "62",
+        "folderId": "393",
+        "color": "#388c46",
+        "latex": "s_{tart}=\\left(-\\frac{90}{2}s,-\\frac{45}{2}s\\right)",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "63",
+        "folderId": "393",
+        "color": "#6042a6",
+        "latex": "e_{nd}=-s_{tart}",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "77",
+        "folderId": "393",
+        "color": "#000000",
+        "latex": "f_{oot}=\\left(\\frac{e_{nd}.x}{2},0\\right)",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "78",
+        "folderId": "393",
+        "color": "#c74440",
+        "latex": "h_{ead}=\\left(\\frac{s_{tart}.x}{2},0\\right)",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "91",
+        "folderId": "393",
+        "color": "#c74440",
+        "latex": "b_{allidx}=\\left[1...15\\right]"
+      },
+      {
+        "type": "expression",
+        "id": "113",
+        "folderId": "393",
+        "color": "#2d70b3",
+        "latex": "p_{ositions}=\\left[f_{oot},o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},2b_{all}\\right),o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},4b_{all}\\right),o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},6b_{all}\\right),o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},8b_{all}\\right),o_{ffset}\\left(o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},6b_{all}\\right),-\\frac{\\pi}{6},2b_{all}\\right),o_{ffset}\\left(o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},4b_{all}\\right),-\\frac{\\pi}{6},2b_{all}\\right),o_{ffset}\\left(o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},2b_{all}\\right),-\\frac{\\pi}{6},2b_{all}\\right),o_{ffset}\\left(f_{oot},-\\frac{\\pi}{6},2b_{all}\\right),o_{ffset}\\left(o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},4b_{all}\\right),-\\frac{\\pi}{6},4b_{all}\\right),o_{ffset}\\left(o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},2b_{all}\\right),-\\frac{\\pi}{6},4b_{all}\\right),o_{ffset}\\left(f_{oot},-\\frac{\\pi}{6},4b_{all}\\right),o_{ffset}\\left(o_{ffset}\\left(f_{oot},\\frac{\\pi}{6},2b_{all}\\right),-\\frac{\\pi}{6},6b_{all}\\right),o_{ffset}\\left(f_{oot},-\\frac{\\pi}{6},6b_{all}\\right),o_{ffset}\\left(f_{oot},-\\frac{\\pi}{6},8b_{all}\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "118",
+        "folderId": "393",
+        "color": "#388c46",
+        "latex": "z_{erovels}=\\left[\\left(0,0\\right)\\operatorname{for}i=\\left[1...15\\right]\\right]",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "109",
+        "folderId": "393",
+        "color": "#6042a6",
+        "latex": "s_{tripe}=\\left[\\left\\{9\\le i\\le15:1,0\\right\\}\\operatorname{for}i=\\left[1...16\\right]\\right]"
+      },
+      {
+        "type": "expression",
+        "id": "412",
+        "folderId": "393",
+        "color": "#000000",
+        "latex": "s_{tripesize}=0.6"
+      },
+      {
+        "type": "expression",
+        "id": "416",
+        "folderId": "393",
+        "color": "#2d70b3",
+        "latex": "p_{ocketpos}=\\left[s_{tart},\\left(0,s_{tart}.y\\right),\\left(e_{nd}.x,s_{tart}.y\\right),e_{nd},\\left(0,e_{nd}.y\\right),\\left(s_{tart}.x,e_{nd}.y\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "417",
+        "folderId": "393",
+        "color": "#388c46",
+        "latex": "p_{ocketsize}=2b_{all}"
+      },
+      {
+        "type": "folder",
+        "id": "395",
+        "title": "Rendering",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "518",
+        "folderId": "395",
+        "text": "The rendering of the parts of the pool table"
+      },
+      {
+        "type": "text",
+        "id": "520",
+        "folderId": "395",
+        "text": "This is the background and the table itself"
+      },
+      {
+        "type": "expression",
+        "id": "61",
+        "folderId": "395",
+        "color": "#2d70b3",
+        "latex": "\\left|x\\right|>-1",
+        "colorLatex": "b_{g}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "434",
+        "folderId": "395",
+        "color": "#388c46",
+        "latex": "t_{outline}=\\left[\\left(s_{tart}.x-6s,s_{tart}.y-2s\\right),\\left(s_{tart}.x-2s,s_{tart}.y-6s\\right),\\left(e_{nd}.x+2s,s_{tart}.y-6s\\right),\\left(e_{nd}.x+6s,s_{tart}.y-2s\\right),\\left(e_{nd}.x+6s,e_{nd}.y+2s\\right),\\left(e_{nd}.x+2s,e_{nd}.y+6s\\right),\\left(s_{tart}.x-2s,e_{nd}.y+6s\\right),\\left(s_{tart}.x-6s,e_{nd}.y+2s\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "435",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "\\operatorname{polygon}\\left(t_{outline}+\\left(0.2,-0.4\\right)\\right)\\left\\{s_{hadows}=1\\right\\}",
+        "lines": false,
+        "fillOpacity": "0.4"
+      },
+      {
+        "type": "expression",
+        "id": "431",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "\\operatorname{polygon}\\left(t_{outline}\\right)",
+        "lines": false,
+        "colorLatex": "t_{able}",
+        "fillOpacity": "1",
+        "lineOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "437",
+        "folderId": "395",
+        "color": "#c74440",
+        "latex": "t_{nose}=\\left[s_{tart},\\left(s_{tart}.x,e_{nd}.y\\right),e_{nd},\\left(e_{nd}.x,s_{tart}.y\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "484",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "n_{osepoly}=\\left[\\left(s_{tart}.x-b_{all},s_{tart}.y-b_{all}\\right),\\left(s_{tart}.x-b_{all},e_{nd}.y+b_{all}\\right),\\left(e_{nd}.x+b_{all},e_{nd}.y+b_{all}\\right),\\left(e_{nd}.x+b_{all},s_{tart}.y-b_{all}\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "436",
+        "folderId": "395",
+        "color": "#388c46",
+        "latex": "\\operatorname{polygon}\\left(n_{osepoly}\\right)",
+        "lines": false,
+        "colorLatex": "n_{ose}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "94",
+        "folderId": "395",
+        "color": "#388c46",
+        "latex": "\\operatorname{polygon}\\left(t_{nose}\\right)",
+        "lines": false,
+        "fillOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "482",
+        "folderId": "395",
+        "color": "#388c46",
+        "latex": "c_{ircle}\\left(p_{ocketpos},1.2p_{ocketsize}\\right)<0",
+        "lines": false,
+        "colorLatex": "p_{ocketrim}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "480",
+        "folderId": "395",
+        "color": "#c74440",
+        "latex": "c_{ircle}\\left(p_{ocketpos},1.2p_{ocketsize}\\right)<0\\left\\{s_{tart}.x<x<e_{nd}.x\\right\\}\\left\\{s_{tart}.y<y<e_{nd}.y\\right\\}",
+        "lines": false,
+        "colorLatex": "p_{ocketedge}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "text",
+        "id": "522",
+        "folderId": "395",
+        "text": "A polygon to show the predicted path of the cueball"
+      },
+      {
+        "type": "expression",
+        "id": "479",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "\\operatorname{polygon}\\left(o_{ffset}\\left(c_{ue},a_{ngle}\\left(s_{tick},c_{ue}\\right)-\\frac{\\pi}{2},\\frac{b_{all}}{2}\\right),o_{ffset}\\left(c_{ue},a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\frac{\\pi}{2},\\frac{b_{all}}{2}\\right),o_{ffset}\\left(c_{ue},a_{ngle}\\left(s_{tick},c_{ue}\\right),\\left|n_{orm}\\left(c_{ue}-s_{tick}\\right)p_{ower}\\sqrt{\\left|c_{ue}-s_{tick}\\right|}\\right|10\\right)\\right)\\left\\{c_{anlaunch}<l_{aunchspeed}\\right\\}",
+        "lines": false,
+        "fillOpacity": "0.2"
+      },
+      {
+        "type": "text",
+        "id": "527",
+        "folderId": "395",
+        "text": "Shadows!!"
+      },
+      {
+        "type": "expression",
+        "id": "433",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "d_{rawball}\\left(\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)+\\left(0.05,-0.05\\right),v_{isible}\\right)<0\\left\\{s_{hadows}=1\\right\\}",
+        "lines": false,
+        "fillOpacity": "0.4"
+      },
+      {
+        "type": "text",
+        "id": "528",
+        "folderId": "395",
+        "text": "The main set of 15 pool balls"
+      },
+      {
+        "type": "expression",
+        "id": "99",
+        "folderId": "395",
+        "color": "#6042a6",
+        "latex": "d_{rawball}\\left(b_{allpos},v_{isible}\\right)<0",
+        "lines": false,
+        "colorLatex": "b_{allcolours}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "text",
+        "id": "523",
+        "folderId": "395",
+        "text": "Drawing the stripes on striped balls only (9-15)"
+      },
+      {
+        "type": "expression",
+        "id": "411",
+        "folderId": "395",
+        "color": "#6042a6",
+        "latex": "d_{rawstripe}\\left(\\operatorname{join}\\left(b_{allpos},c_{ue}\\right),s_{tripe},v_{isible}\\right)<0",
+        "lines": false,
+        "colorLatex": "b_{asecolour}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "text",
+        "id": "525",
+        "folderId": "395",
+        "text": "Outlines!!!"
+      },
+      {
+        "type": "expression",
+        "id": "413",
+        "folderId": "395",
+        "color": "#c74440",
+        "latex": "d_{rawball}\\left(b_{allpos}\\left[b_{allidx}\\right],v_{isible}\\right)=0",
+        "colorLatex": "b_{lack}",
+        "lineOpacity": "1",
+        "lineWidth": "1"
+      },
+      {
+        "type": "text",
+        "id": "529",
+        "folderId": "395",
+        "text": "The cue ball is drawn in a separate equation, and has it's own outline"
+      },
+      {
+        "type": "expression",
+        "id": "84",
+        "folderId": "395",
+        "color": "#388c46",
+        "latex": "d_{rawball}\\left(c_{ue},1\\right)<0",
+        "lines": false,
+        "colorLatex": "b_{asecolour}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "414",
+        "folderId": "395",
+        "color": "#2d70b3",
+        "latex": "d_{rawball}\\left(\\left(c_{ue}.x,c_{ue}.y\\right),1\\right)=0",
+        "colorLatex": "b_{lack}",
+        "lineOpacity": "1",
+        "lineWidth": "1"
+      },
+      {
+        "type": "text",
+        "id": "530",
+        "folderId": "395",
+        "text": "The center of the pockets, which are the only parts that actually interact with the balls"
+      },
+      {
+        "type": "expression",
+        "id": "419",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "c_{ircle}\\left(p_{ocketpos},p_{ocketsize}\\right)<0",
+        "lines": false,
+        "fillOpacity": "1",
+        "lineOpacity": "1"
+      },
+      {
+        "type": "text",
+        "id": "532",
+        "folderId": "395",
+        "text": "Some polygons and circles to make up the cuestick"
+      },
+      {
+        "type": "expression",
+        "id": "464",
+        "folderId": "395",
+        "color": "#c74440",
+        "latex": "s_{tickpoly}=\\left[o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\frac{\\pi}{2},\\frac{s_{tickwidthend}}{2}\\right),o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)-\\frac{\\pi}{2},\\frac{s_{tickwidthend}}{2}\\right),o_{ffset}\\left(o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\pi,s_{ticklen}\\right),a_{ngle}\\left(s_{tick},c_{ue}\\right)-\\frac{\\pi}{2},\\frac{s_{tickwidthstart}}{2}\\right),o_{ffset}\\left(o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\pi,s_{ticklen}\\right),a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\frac{\\pi}{2},\\frac{s_{tickwidthstart}}{2}\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "469",
+        "folderId": "395",
+        "color": "#c74440",
+        "latex": "s_{tickendpoly}=\\left[o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\frac{\\pi}{2},\\frac{s_{tickwidthend}}{2}\\right),o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)-\\frac{\\pi}{2},\\frac{s_{tickwidthend}}{2}\\right),o_{ffset}\\left(o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\pi,s_{tickendlen}\\right),a_{ngle}\\left(s_{tick},c_{ue}\\right)-\\frac{\\pi}{2},\\frac{s_{tickwidthend}}{2}\\right),o_{ffset}\\left(o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\pi,s_{tickendlen}\\right),a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\frac{\\pi}{2},\\frac{s_{tickwidthend}}{2}\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "465",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "\\operatorname{polygon}\\left(s_{tickpoly}+\\left(0.1,-0.2\\right)\\right)\\left\\{c_{anlaunch}<l_{aunchspeed}\\right\\}\\left\\{s_{hadows}=1\\right\\}",
+        "lines": false
+      },
+      {
+        "type": "expression",
+        "id": "466",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "c_{ircle}\\left(o_{ffset}\\left(s_{tick},a_{ngle}\\left(s_{tick},c_{ue}\\right)+\\pi,s_{ticklen}\\right),\\frac{s_{tickwidthstart}}{2}\\right)<0\\left\\{c_{anlaunch}<l_{aunchspeed}\\right\\}",
+        "lines": false,
+        "fillOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "468",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "c_{ircle}\\left(s_{tick},\\frac{s_{tickwidthstart}}{4}\\right)<0\\left\\{c_{anlaunch}<l_{aunchspeed}\\right\\}",
+        "lines": false,
+        "fillOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "442",
+        "folderId": "395",
+        "color": "#c74440",
+        "latex": "\\operatorname{polygon}\\left(s_{tickpoly}\\right)\\left\\{c_{anlaunch}<l_{aunchspeed}\\right\\}",
+        "lines": false,
+        "colorLatex": "c_{uestick}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "expression",
+        "id": "472",
+        "folderId": "395",
+        "color": "#6042a6",
+        "latex": "\\operatorname{polygon}\\left(s_{tickendpoly}\\right)\\left\\{c_{anlaunch}<l_{aunchspeed}\\right\\}",
+        "lines": false,
+        "colorLatex": "b_{asecolour}",
+        "fillOpacity": "1"
+      },
+      {
+        "type": "text",
+        "id": "534",
+        "folderId": "395",
+        "text": "Some text elements other than buttons"
+      },
+      {
+        "type": "expression",
+        "id": "478",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "b_{all8}=b_{allpos}\\left[8\\right]\\left\\{v_{isible}\\left[8\\right]=1\\right\\}",
+        "showLabel": true,
+        "label": "8",
+        "hidden": true,
+        "labelSize": "5s"
+      },
+      {
+        "type": "expression",
+        "id": "490",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "s_{1}=\\left(s_{tart}.x-6s,e_{nd}.y+10s\\right)",
+        "showLabel": true,
+        "label": "𝐒𝐨𝐥𝐢𝐝 ${s_olidscore}",
+        "hidden": true,
+        "labelOrientation": "right",
+        "labelSize": "1.2"
+      },
+      {
+        "type": "expression",
+        "id": "491",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "s_{2}=\\left(e_{nd}.x+6s,e_{nd}.y+10s\\right)",
+        "showLabel": true,
+        "label": "𝐒𝐭𝐫𝐢𝐩𝐞 ${s_tripescore}",
+        "hidden": true,
+        "labelOrientation": "left",
+        "labelSize": "1.2"
+      },
+      {
+        "type": "expression",
+        "id": "494",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "b_{all8in}=\\left(0,s_{tart}.y-10s\\right)\\left\\{v_{isible}\\left[8\\right]=0\\right\\}\\left\\{s_{olidscore}>0\\right\\}\\left\\{s_{tripescore}>0\\right\\}",
+        "showLabel": true,
+        "label": "𝟖 𝐛𝐚𝐥𝐥 𝐩𝐨𝐜𝐤𝐞𝐭𝐞𝐝! 𝐆𝐚𝐦𝐞 𝐨𝐯𝐞𝐫",
+        "hidden": true,
+        "labelSize": "1.2"
+      },
+      {
+        "type": "expression",
+        "id": "495",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "s_{owin}=\\left(0,s_{tart}.y-10s\\right)\\left\\{v_{isible}\\left[8\\right]=0\\right\\}\\left\\{s_{olidscore}=0\\right\\}",
+        "showLabel": true,
+        "label": "𝐒𝐨𝐥𝐢𝐝 𝐰𝐢𝐧𝐬! 𝐂𝐥𝐢𝐜𝐤 𝐫𝐞𝐬𝐞𝐭",
+        "hidden": true,
+        "labelSize": "1.2"
+      },
+      {
+        "type": "expression",
+        "id": "496",
+        "folderId": "395",
+        "color": "#000000",
+        "latex": "s_{owin}=\\left(0,s_{tart}.y-10s\\right)\\left\\{v_{isible}\\left[8\\right]=0\\right\\}\\left\\{s_{tripescore}=0\\right\\}",
+        "showLabel": true,
+        "label": "𝐒𝐭𝐫𝐢𝐩𝐞 𝐰𝐢𝐧𝐬! 𝐂𝐥𝐢𝐜𝐤 𝐫𝐞𝐬𝐞𝐭",
+        "hidden": true,
+        "labelSize": "1.2"
+      },
+      {
+        "type": "folder",
+        "id": "474",
+        "title": "Buttons",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "535",
+        "folderId": "474",
+        "text": "The launch and reset button"
+      },
+      {
+        "type": "expression",
+        "id": "477",
+        "folderId": "474",
+        "color": "#000000",
+        "latex": "l_{txt}=\\left(0,35s\\right)",
+        "showLabel": true,
+        "label": "𝐋𝐚𝐮𝐧𝐜𝐡!",
+        "hidden": true,
+        "dragMode": "NONE",
+        "labelSize": "1.5",
+        "description": "launch",
+        "clickableInfo": {
+          "enabled": true,
+          "latex": "l_{aunch}"
+        }
+      },
+      {
+        "type": "expression",
+        "id": "489",
+        "folderId": "474",
+        "color": "#000000",
+        "latex": "r_{txt}=\\left(0,31.5s\\right)",
+        "showLabel": true,
+        "label": "𝐑𝐞𝐬𝐞𝐭",
+        "hidden": true,
+        "dragMode": "NONE",
+        "labelSize": "1.25",
+        "description": "reset",
+        "pointOpacity": "1",
+        "clickableInfo": {
+          "enabled": true,
+          "latex": "r_{eset}"
+        }
+      },
+      {
+        "type": "folder",
+        "id": "375",
+        "title": "Helper Functions",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "537",
+        "folderId": "375",
+        "text": "Some helpful functions to make the expressions a little bit more concise."
+      },
+      {
+        "type": "text",
+        "id": "538",
+        "folderId": "375",
+        "text": "A function to remove all the pesky undefined values from the list that my collision detection function outputs."
+      },
+      {
+        "type": "expression",
+        "id": "287",
+        "folderId": "375",
+        "color": "#c74440",
+        "latex": "r_{emovenan}\\left(l\\right)=l\\left[l=l\\right]"
+      },
+      {
+        "type": "text",
+        "id": "539",
+        "folderId": "375",
+        "text": "Normalize a vector (very intriguing)."
+      },
+      {
+        "type": "expression",
+        "id": "335",
+        "folderId": "375",
+        "color": "#000000",
+        "latex": "n_{orm}\\left(v\\right)=\\frac{v}{\\left|v\\right|}",
+        "hidden": true
+      },
+      {
+        "type": "text",
+        "id": "541",
+        "folderId": "375",
+        "text": "Offset a vector \"src\" in a direction \"angle\" by distance \"dist\"."
+      },
+      {
+        "type": "expression",
+        "id": "112",
+        "folderId": "375",
+        "color": "#2d70b3",
+        "latex": "o_{ffset}\\left(s_{rc},a_{ngle},d_{ist}\\right)=\\left(s_{rc}.x+d_{ist}\\cos\\left(a_{ngle}\\right),s_{rc}.y+d_{ist}\\sin\\left(a_{ngle}\\right)\\right)"
+      },
+      {
+        "type": "text",
+        "id": "542",
+        "folderId": "375",
+        "text": "Batch collision detection used to detect if a vector is closer than a threshold \"detect\" to any point in a set."
+      },
+      {
+        "type": "expression",
+        "id": "420",
+        "folderId": "375",
+        "color": "#c74440",
+        "latex": "i_{ncircles}\\left(c_{ircles},d_{etect},p_{os}\\right)=\\min\\left(d_{istsqr}\\left(p_{os},c_{ircles}\\right)\\right)-d_{etect}^{2}"
+      },
+      {
+        "type": "text",
+        "id": "543",
+        "folderId": "375",
+        "text": "An atan2 helper function to make my other helper function \"angle\" more concise. It pretty much helps my helper function :]"
+      },
+      {
+        "type": "expression",
+        "id": "291",
+        "folderId": "375",
+        "color": "#000000",
+        "latex": "a_{rctan2}\\left(x,y\\right)=\\left\\{x\\ge0:\\arctan\\left(\\frac{y}{x}\\right),xy\\le0:\\arctan\\left(\\frac{y}{x}\\right)+\\pi,\\ x<0:\\arctan\\left(\\frac{y}{x}\\right)-\\pi\\right\\}"
+      },
+      {
+        "type": "text",
+        "id": "544",
+        "folderId": "375",
+        "text": "The angle between two vectors"
+      },
+      {
+        "type": "expression",
+        "id": "147",
+        "folderId": "375",
+        "color": "#2d70b3",
+        "latex": "a_{ngle}\\left(u,v\\right)=a_{rctan2}\\left(u.x-v.x,u.y-v.y\\right)-\\pi"
+      },
+      {
+        "type": "text",
+        "id": "545",
+        "folderId": "375",
+        "text": "The square of the distance between two points, because it's more efficient to compare this number to the square of a threshold when doing collision detection than to actually complete a square root to find the actual distance (computers hate doing square roots)!"
+      },
+      {
+        "type": "expression",
+        "id": "463",
+        "folderId": "375",
+        "color": "#388c46",
+        "latex": "d_{istsqr}\\left(u,v\\right)=\\left(u.x-v.x\\right)^{2}+\\left(u.y-v.y\\right)^{2}"
+      },
+      {
+        "type": "text",
+        "id": "554",
+        "folderId": "375",
+        "text": "The star of the show! itemcollisions finds any balls that collide with any other balls"
+      },
+      {
+        "type": "expression",
+        "id": "155",
+        "folderId": "375",
+        "color": "#000000",
+        "latex": "i_{temcollisions}\\left(i_{dx}\\right)=\\left[\\left\\{v_{isible}\\left[i_{dx}\\right]+v_{isible}\\left[c_{heckidx}\\right]=2:\\left\\{\\left|i_{dx}-c_{heckidx}\\right|>0:\\left\\{d_{istsqr}\\left(\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i_{dx}\\right],\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[c_{heckidx}\\right]\\right)<\\left(2b_{all}\\right)^{2}:c_{heckidx}\\right\\}\\right\\}\\right\\}\\operatorname{for}c_{heckidx}=\\operatorname{join}\\left(b_{allidx},16\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "folder",
+        "id": "380",
+        "title": "Velocity Calculation",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "546",
+        "folderId": "380",
+        "text": "Some functions used to update the velocity of the balls."
+      },
+      {
+        "type": "text",
+        "id": "547",
+        "folderId": "380",
+        "text": "A function to calculate the final velocity of an elastic collision from the two colliding velocities and positions."
+      },
+      {
+        "type": "expression",
+        "id": "334",
+        "folderId": "380",
+        "color": "#6042a6",
+        "latex": "f_{inalvel}\\left(v_{1},v_{2},p_{1},p_{2}\\right)=v_{1}-\\left(\\left(v_{1}-v_{2}\\right)\\cdot n_{orm}\\left(p_{1}-p_{2}\\right)\\right)n_{orm}\\left(p_{1}-p_{2}\\right)"
+      },
+      {
+        "type": "text",
+        "id": "548",
+        "folderId": "380",
+        "text": "bouncepoints is wrapper for finalvel that ignores undefined values and also takes array indices as an input."
+      },
+      {
+        "type": "expression",
+        "id": "317",
+        "folderId": "380",
+        "color": "#000000",
+        "latex": "b_{ouncepoints}\\left(i_{dx1},i_{dx2}\\right)=\\left\\{i_{dx2}=i_{dx2}:b_{allcr}f_{inalvel}\\left(\\operatorname{join}\\left(v_{els},c_{uevel}\\right)\\left[i_{dx1}\\right],\\operatorname{join}\\left(v_{els},c_{uevel}\\right)\\left[i_{dx2}\\right],\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i_{dx1}\\right],\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i_{dx2}\\right]\\right),\\operatorname{join}\\left(v_{els},c_{uevel}\\right)\\left[i_{dx1}\\right]\\right\\}"
+      },
+      {
+        "type": "text",
+        "id": "549",
+        "folderId": "380",
+        "text": "bounceballs is a wrapper for bouncepoints that feeds it collisions."
+      },
+      {
+        "type": "expression",
+        "id": "316",
+        "folderId": "380",
+        "color": "#6042a6",
+        "latex": "b_{ounceballs}\\left(i_{dx}\\right)=b_{ouncepoints}\\left(i_{dx},r_{emovenan}\\left(i_{temcollisions}\\left(i_{dx}\\right)\\right)\\left[1\\right]\\right)"
+      },
+      {
+        "type": "text",
+        "id": "550",
+        "folderId": "380",
+        "text": "This function takes in a velocity and mirrors it if the ball is colliding with a wall."
+      },
+      {
+        "type": "expression",
+        "id": "126",
+        "folderId": "380",
+        "color": "#c74440",
+        "latex": "b_{ouncewall}\\left(p_{os},v_{el}\\right)=\\left(\\left\\{p_{os}.x-b_{all}<s_{tart}.x:\\left\\{v_{el}.x<0:-w_{allcr}v_{el}.x,v_{el}.x\\right\\},\\left\\{p_{os}.x+b_{all}>e_{nd}.x:\\left\\{v_{el}.x>0:-w_{allcr}v_{el}.x,v_{el}.x\\right\\},v_{el}.x\\right\\}\\right\\},\\left\\{p_{os}.y-b_{all}<s_{tart}.y:\\left\\{v_{el}.y<0:-w_{allcr}v_{el}.y,v_{el}.y\\right\\},\\left\\{p_{os}.y+b_{all}>e_{nd}.y:\\left\\{v_{el}.y>0:-w_{allcr}v_{el}.y,v_{el}.y\\right\\},v_{el}.y\\right\\}\\right\\}\\right)"
+      },
+      {
+        "type": "text",
+        "id": "551",
+        "folderId": "380",
+        "text": "A general function the applies all of the above functions as well as friction onto any position and array index."
+      },
+      {
+        "type": "expression",
+        "id": "130",
+        "folderId": "380",
+        "color": "#000000",
+        "latex": "c_{omputevel}\\left(p_{os},i_{dx}\\right)=f_{riction}b_{ouncewall}\\left(p_{os},b_{ounceballs}\\left(i_{dx}\\right)\\right)"
+      },
+      {
+        "type": "text",
+        "id": "552",
+        "folderId": "380",
+        "text": "An action that uses computevel to update the velocities of all the balls."
+      },
+      {
+        "type": "expression",
+        "id": "124",
+        "folderId": "380",
+        "color": "#6042a6",
+        "latex": "u_{pdatevel}=v_{els}\\to\\left[c_{omputevel}\\left(b_{allpos}\\left[i_{dx}\\right],i_{dx}\\right)\\operatorname{for}i_{dx}=b_{allidx}\\right],c_{uevel}\\to\\left\\{i_{ncircles}\\left(p_{ocketpos},3b_{all},c_{ue}\\right)>0:c_{omputevel}\\left(c_{ue},16\\right),\\left(0,0\\right)\\right\\}"
+      },
+      {
+        "type": "folder",
+        "id": "381",
+        "title": "Position Calculation",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "553",
+        "folderId": "381",
+        "text": "Some functions used to update the position of the balls."
+      },
+      {
+        "type": "text",
+        "id": "555",
+        "folderId": "381",
+        "text": "movepoint moves two balls away from eachother until they no longer collide."
+      },
+      {
+        "type": "expression",
+        "id": "146",
+        "folderId": "381",
+        "color": "#c74440",
+        "latex": "m_{ovepoint}\\left(i\\right)=\\left\\{d_{istsqr}\\left(\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i.x\\right],\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i.y\\right]\\right)<\\left(2b_{all}\\right)^{2}:o_{ffset}\\left(\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i.x\\right],a_{ngle}\\left(\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i.x\\right],\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i.y\\right]\\right),d_{istsqr}\\left(\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i.x\\right],\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i.y\\right]\\right)-\\left(2b_{all}\\right)^{2}-0.001\\right),\\operatorname{join}\\left(b_{allpos},c_{ue}\\right)\\left[i.x\\right]\\right\\}"
+      },
+      {
+        "type": "text",
+        "id": "556",
+        "folderId": "381",
+        "text": "fixcollisions uses movepoint to push apart any colliding balls."
+      },
+      {
+        "type": "expression",
+        "id": "150",
+        "folderId": "381",
+        "color": "#000000",
+        "latex": "f_{ixcollisions}\\left(i_{dx}\\right)=m_{ovepoint}\\left(\\left(i_{dx},r_{emovenan}\\left(i_{temcollisions}\\left(i_{dx}\\right)\\right)\\left[1\\right]\\right)\\right)"
+      },
+      {
+        "type": "text",
+        "id": "557",
+        "folderId": "381",
+        "text": "updatepos is an action that uses fixcollisions to update the positions of all the balls as well as using euler integration to move the points in the direction of their velocity."
+      },
+      {
+        "type": "expression",
+        "id": "122",
+        "folderId": "381",
+        "color": "#2d70b3",
+        "latex": "u_{pdatepos}=b_{allpos}\\to\\left[f_{ixcollisions}\\left(i_{dx}\\right)\\operatorname{for}i_{dx}=b_{allidx}\\right]+v_{els},c_{ue}\\to\\left\\{i_{ncircles}\\left(p_{ocketpos},3b_{all},c_{ue}\\right)>0:f_{ixcollisions}\\left(16\\right)+c_{uevel},h_{ead}\\right\\}"
+      },
+      {
+        "type": "folder",
+        "id": "424",
+        "title": "Logic",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "558",
+        "folderId": "424",
+        "text": "Logic functions and variables used for general game logic."
+      },
+      {
+        "type": "text",
+        "id": "559",
+        "folderId": "424",
+        "text": "updatevisible checks that no balls are touching a pocket, and makes them invisible if they are."
+      },
+      {
+        "type": "expression",
+        "id": "426",
+        "folderId": "424",
+        "color": "#000000",
+        "latex": "u_{pdatevisible}=v_{isible}\\to\\left[\\left\\{v_{isible}\\left[i_{dx}\\right]=1:\\left\\{i_{ncircles}\\left(p_{ocketpos},3b_{all},b_{allpos}\\left[i_{dx}\\right]\\right)<0:0,1\\right\\},0\\right\\}\\operatorname{for}i_{dx}=\\left[1...16\\right]\\right]"
+      },
+      {
+        "type": "text",
+        "id": "560",
+        "folderId": "424",
+        "text": "canlaunch is just a variable that contains the scalar speed of the fastest ball, and this checks against the \"launchspeed\" variable to determine if all the balls are slow enough for another shot to commence."
+      },
+      {
+        "type": "expression",
+        "id": "487",
+        "folderId": "424",
+        "color": "#388c46",
+        "latex": "c_{anlaunch}=\\max\\left(\\left|\\operatorname{join}\\left(v_{els},c_{uevel}\\right)\\right|\\right)"
+      },
+      {
+        "type": "text",
+        "id": "561",
+        "folderId": "424",
+        "text": "solidscore and stripescore are variables that basically find the sum of the bitwise and between the visible and solid/stripe balls to determine how many of each kind remain."
+      },
+      {
+        "type": "expression",
+        "id": "492",
+        "folderId": "424",
+        "color": "#388c46",
+        "latex": "s_{olidscore}=\\left(\\sum_{n=1}^{16}\\left(\\left(1-s_{tripe}\\left[n\\right]\\right)v_{isible}\\left[n\\right]\\right)\\right)-1-v_{isible}\\left[8\\right]"
+      },
+      {
+        "type": "expression",
+        "id": "493",
+        "folderId": "424",
+        "color": "#6042a6",
+        "latex": "s_{tripescore}=\\sum_{n=1}^{16}\\left(s_{tripe}\\left[n\\right]v_{isible}\\left[n\\right]\\right)"
+      },
+      {
+        "type": "folder",
+        "id": "394",
+        "title": "Simulation Variables",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "562",
+        "folderId": "394",
+        "text": "These are variables that contain general live-updating information about the simulation, such as position and velocity. To minimize lag, close this folder (others too, but especially this one) when running the simulation."
+      },
+      {
+        "type": "text",
+        "id": "563",
+        "folderId": "394",
+        "text": "Cue position"
+      },
+      {
+        "type": "expression",
+        "id": "80",
+        "folderId": "394",
+        "color": "#388c46",
+        "latex": "c_{ue}=\\left(-2.8125,0\\right)",
+        "hidden": true
+      },
+      {
+        "type": "text",
+        "id": "564",
+        "folderId": "394",
+        "text": "Array of ball positions"
+      },
+      {
+        "type": "expression",
+        "id": "97",
+        "folderId": "394",
+        "color": "#2d70b3",
+        "latex": "b_{allpos}=\\left[\\left(2.8103844557444115,-0.00006229091208258166\\right),\\left(3.0551281296152446,0.14108597431278705\\right),\\left(3.2993208912575027,0.28207603465595477\\right),\\left(3.5451365262521626,0.42296581522664456\\right),\\left(3.7888146117479544,0.5648387120964233\\right),\\left(3.7885453618278486,0.2815141093539431\\right),\\left(3.5440754630901776,0.14007745805685926\\right),\\left(3.2996392896287468,0\\right),\\left(3.054649631239136,-0.14079186829137083\\right),\\left(3.7881972420723904,-0.00046052782551885213\\right),\\left(3.543637283761609,-0.14137108060842912\\right),\\left(3.2990772230608756,-0.2840863246205316\\right),\\left(3.7876575128316796,-0.2817158535269853\\right),\\left(3.543580103185485,-0.42437781736672275\\right),\\left(3.7878294218902013,-0.56570551791027\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "text",
+        "id": "565",
+        "folderId": "394",
+        "text": "Array of ball velocities"
+      },
+      {
+        "type": "expression",
+        "id": "119",
+        "folderId": "394",
+        "color": "#6042a6",
+        "latex": "v_{els}=\\left[\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right),\\left(0,0\\right)\\right]",
+        "hidden": true
+      },
+      {
+        "type": "text",
+        "id": "566",
+        "folderId": "394",
+        "text": "A \"ticktype\" variable that alternates between updating the velocity and updating the position, because euler integration requires them to be updated in sequence."
+      },
+      {
+        "type": "expression",
+        "id": "325",
+        "folderId": "394",
+        "color": "#388c46",
+        "latex": "t_{icktype}=0"
+      },
+      {
+        "type": "text",
+        "id": "567",
+        "folderId": "394",
+        "text": "Cue velocity"
+      },
+      {
+        "type": "expression",
+        "id": "123",
+        "folderId": "394",
+        "color": "#388c46",
+        "latex": "c_{uevel}=\\left(0,0\\right)",
+        "hidden": true
+      },
+      {
+        "type": "text",
+        "id": "568",
+        "folderId": "394",
+        "text": "An array that shows which balls are visible and not sunk"
+      },
+      {
+        "type": "expression",
+        "id": "421",
+        "folderId": "394",
+        "color": "#2d70b3",
+        "latex": "v_{isible}=\\left[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\\right]"
+      },
+      {
+        "type": "folder",
+        "id": "379",
+        "title": "Colours",
+        "collapsed": true
+      },
+      {
+        "type": "text",
+        "id": "569",
+        "folderId": "379",
+        "text": "This is pretty self-explanatory..."
+      },
+      {
+        "type": "expression",
+        "id": "1",
+        "folderId": "379",
+        "color": "#c74440",
+        "latex": "b_{g}=\\operatorname{rgb}\\left(240,225,198\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "100",
+        "folderId": "379",
+        "color": "#000000",
+        "latex": "y_{ellow}=\\operatorname{rgb}\\left(255,189,66\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "101",
+        "folderId": "379",
+        "color": "#c74440",
+        "latex": "b_{lue}=\\operatorname{rgb}\\left(43,65,153\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "102",
+        "folderId": "379",
+        "color": "#2d70b3",
+        "latex": "r_{ed}=\\operatorname{rgb}\\left(219,35,54\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "103",
+        "folderId": "379",
+        "color": "#388c46",
+        "latex": "p_{urple}=\\operatorname{rgb}\\left(137,65,163\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "104",
+        "folderId": "379",
+        "color": "#6042a6",
+        "latex": "o_{range}=\\operatorname{rgb}\\left(255,105,36\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "105",
+        "folderId": "379",
+        "color": "#000000",
+        "latex": "g_{reen}=\\operatorname{rgb}\\left(16,74,31\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "106",
+        "folderId": "379",
+        "color": "#c74440",
+        "latex": "d_{arkred}=\\operatorname{rgb}\\left(120,19,38\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "107",
+        "folderId": "379",
+        "color": "#2d70b3",
+        "latex": "b_{lack}=\\operatorname{rgb}\\left(21,21,33\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "108",
+        "folderId": "379",
+        "color": "#388c46",
+        "latex": "b_{allcolours}=\\left[y_{ellow},b_{lue},r_{ed},p_{urple},o_{range},g_{reen},d_{arkred},b_{lack},y_{ellow},b_{lue},r_{ed},p_{urple},o_{range},g_{reen},d_{arkred}\\right]"
+      },
+      {
+        "type": "expression",
+        "id": "85",
+        "folderId": "379",
+        "color": "#388c46",
+        "latex": "b_{asecolour}=\\operatorname{rgb}\\left(255,253,245\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "432",
+        "folderId": "379",
+        "color": "#c74440",
+        "latex": "t_{able}=\\operatorname{rgb}\\left(110,46,16\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "438",
+        "folderId": "379",
+        "color": "#2d70b3",
+        "latex": "n_{ose}=\\operatorname{rgb}\\left(30,102,46\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "443",
+        "folderId": "379",
+        "color": "#2d70b3",
+        "latex": "c_{uestick}=\\operatorname{rgb}\\left(227,186,150\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "481",
+        "folderId": "379",
+        "color": "#2d70b3",
+        "latex": "p_{ocketedge}=\\operatorname{rgb}\\left(59,37,23\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "483",
+        "folderId": "379",
+        "color": "#6042a6",
+        "latex": "p_{ocketrim}=\\operatorname{rgb}\\left(46,23,9\\right)"
+      }
+    ],
+    "ticker": {
+      "handlerLatex": "t_{ick}",
+      "playing": true,
+      "open": true
+    }
+  },
+  "includeFunctionParametersInRandomSeed": true,
+  "doNotMigrateMovablePointStyle": true
+}

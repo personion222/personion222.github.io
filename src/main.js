@@ -1,4 +1,7 @@
 import "./style.css"
+import exifr from "exifr"
+import js_yaml from "js-yaml"
+import fs from "fs"
 
 const resize_rate = 6;
 const min_size = 20;
@@ -6,15 +9,22 @@ const max_size = 220;
 const main_el = document.querySelector("main");
 const timestr = document.getElementById("timestr");
 
-add_template(document.getElementById("whoami").parentElement.parentElement.getElementsByClassName("windowcontent")[0], "whoamicont");
-add_template(document.getElementById("site").parentElement.parentElement.getElementsByClassName("windowcontent")[0], "sitecont");
+add_template(document.getElementById("whoami").parentElement.parentElement.getElementsByClassName("windowcontent")[0], "whoamitemp");
+add_template(document.getElementById("site").parentElement.parentElement.getElementsByClassName("windowcontent")[0], "sitetemp");
 
 update_time();
 setInterval(update_time, 1000);
 
+const calc_projects = ["fox", "pool", "drone"];
+const calc_proj = calc_projects[randmaxint(3)];
 var elt = document.getElementById("calculator");
-var calculator = Desmos.GraphingCalculator(elt);
-fetch("./src/assets/calcstate.json").then((response) => {
+var calculator;
+if (calc_proj == "drone") {
+	calculator = Desmos.Calculator3D(elt, {expressionsCollapsed: true});
+} else {
+	calculator = Desmos.GraphingCalculator(elt, {expressionsCollapsed: true});
+}
+fetch(`./src/assets/${calc_proj}.json`).then((response) => {
 	return response.json();
 }).then((data) => {
 	console.log(data);
@@ -24,12 +34,27 @@ fetch("./src/assets/calcstate.json").then((response) => {
 var viewer = OpenSeadragon({
 	id: "openseadragon",
 	prefixUrl: "./src/openseadragon/images/",
-	tileSources: "./public/dzi/IMG_1661.dzi"
+	// tileSources: "./dzi/IMG_1661.dzi",
+	maxZoomPixelRatio: 5,
 });
+
+var yaml_parsed;
+var img_idx;
+var img_ids;
+fetch("./src/assets/images/index.yaml").then(async (response) => {
+	const yaml_text = await response.text();
+	yaml_parsed = js_yaml.load(yaml_text);
+	console.log(yaml_parsed);
+	img_ids = Object.keys(yaml_parsed);
+	img_ids.sort();
+	console.log(img_ids);
+	img_idx = Math.floor(Math.random() * img_ids.length);
+	load_photo(img_ids[img_idx]);
+})
 
 addEventListener("keydown", (event) => {
 	console.log(event.key);
-	if (event.shiftKey) {
+	if (event.ctrlKey) {
 		let sel_window = document.querySelector(".window:hover");
 		if (sel_window) {
 			let side = sel_window.parentElement;
@@ -87,32 +112,46 @@ document.getElementById("whoami").onmouseover = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
-		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "whoamicont");
+		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "whoamitemp");
 	}
 }
 
-document.getElementById("asdf").onmouseover = () => {
+document.getElementById("contact").onmouseover = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
-		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "asdfcont");
+		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "contacttemp");
 	}
 }
 
-document.getElementById("site").onmouseover = () => {
+document.getElementById("site").onmouseover = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
-		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "sitecont");
+		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "sitetemp");
 	}
 }
 
-document.getElementById("8831").onmouseover = () => {
+document.getElementById("8831").onmouseover = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
-		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "8831cont");
+		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "8831temp");
 	}
+}
+
+document.getElementById("bckbtn").onclick = () => {
+	img_idx--;
+	img_idx = modulo(img_idx, img_ids.length);
+	console.log(img_idx);
+	load_photo(img_ids[img_idx]);
+}
+
+document.getElementById("fwdbtn").onclick = () => {
+	img_idx++;
+	img_idx = modulo(img_idx, img_ids.length);
+	console.log(img_idx);
+	load_photo(img_ids[img_idx]);
 }
 
 function change_sel(element) {
@@ -125,13 +164,39 @@ function change_sel(element) {
 }
 
 function add_template(pos, temp) {
-	if (pos.firstChild) {
+	while (pos.firstChild) {
 		pos.removeChild(pos.firstChild);
 	}
 	pos.appendChild(document.getElementById(temp).content.cloneNode(true));
 }
 
+function load_photo(id) {
+	viewer.open(`./dzi/${id}.dzi`);
+	exifr.parse(`./src/assets/images/jpeg/${id}.jpg`).then((response) => {
+		console.log(response);
+		document.getElementById("eogexifval").innerHTML = `
+			<a href="./src/assets/images/jpeg/${id}.jpg" download>${id}.jpg</a><br>
+			f/${response.FNumber.toFixed(1)}<br>
+			1/${Math.round(1 / response.ExposureTime)} sec.<br>
+			${response.FocalLength.toFixed(1)} (lens)<br>
+			${response.ISO}<br>
+			${response.Make}<br>
+			${response.Model}<br>
+			${response.DateTimeOriginal.toLocaleDateString()}<br>
+			${response.DateTimeOriginal.toLocaleTimeString()}<br>
+			${yaml_parsed[id]["location"]}<br>`;
+	});
+}
+
 function update_time() {
 	let date = new Date();
 	timestr.textContent = `my local time: ${date.toLocaleString("en-GB", {timeZone: "America/Toronto"})} (America/Toronto)`;
+}
+
+function modulo(n, d){
+	return ((n % d) + d) % d;
+}
+
+function randmaxint(int) {
+	return Math.floor(Math.random() * int);
 }
