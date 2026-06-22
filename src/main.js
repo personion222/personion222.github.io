@@ -1,7 +1,8 @@
-import "./style.css"
-import exifr from "exifr"
-import js_yaml from "js-yaml"
-import fs from "fs"
+import "./style.css";
+import exifr from "exifr";
+import js_yaml from "js-yaml";
+import fs from "fs";
+import OpenSeadragon from "openseadragon";
 
 const resize_rate = 6;
 const min_size = 20;
@@ -24,7 +25,7 @@ if (calc_proj == "drone") {
 } else {
 	calculator = Desmos.GraphingCalculator(elt, {expressionsCollapsed: true});
 }
-fetch(`./src/assets/${calc_proj}.json`).then((response) => {
+fetch(`./assets/${calc_proj}.json`).then((response) => {
 	return response.json();
 }).then((data) => {
 	console.log(data);
@@ -33,7 +34,7 @@ fetch(`./src/assets/${calc_proj}.json`).then((response) => {
 
 var viewer = OpenSeadragon({
 	id: "openseadragon",
-	prefixUrl: "./src/openseadragon/images/",
+	prefixUrl: "/openseadragon-images/",
 	// tileSources: "./dzi/IMG_1661.dzi",
 	maxZoomPixelRatio: 5,
 });
@@ -41,7 +42,7 @@ var viewer = OpenSeadragon({
 var yaml_parsed;
 var img_idx;
 var img_ids;
-fetch("./src/assets/images/index.yaml").then(async (response) => {
+fetch("./assets/images/index.yaml").then(async (response) => {
 	const yaml_text = await response.text();
 	yaml_parsed = js_yaml.load(yaml_text);
 	console.log(yaml_parsed);
@@ -171,11 +172,11 @@ function add_template(pos, temp) {
 }
 
 function load_photo(id) {
-	viewer.open(`./dzi/${id}.dzi`);
-	exifr.parse(`./src/assets/images/jpeg/${id}.jpg`).then((response) => {
+	viewer.open(`/dzi/${id}.dzi`);
+	exifr.parse(`./assets/images/jpeg/${id}.jpg`).then((response) => {
 		console.log(response);
 		document.getElementById("eogexifval").innerHTML = `
-			<a href="./src/assets/images/jpeg/${id}.jpg" download>${id}.jpg</a><br>
+			<a href="./assets/images/jpeg/${id}.jpg" download>${id}.jpg</a><br>
 			f/${response.FNumber.toFixed(1)}<br>
 			1/${Math.round(1 / response.ExposureTime)} sec.<br>
 			${response.FocalLength.toFixed(1)} (lens)<br>
