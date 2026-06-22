@@ -4,7 +4,7 @@
 
 @font-face {
 	font-family: iosevkaterm;
-	src: url(./src/assets/fonts/iosevka-term-regular.woff2);
+	src: url(./assets/fonts/iosevka-term-regular.woff2);
 }
 
 html {
