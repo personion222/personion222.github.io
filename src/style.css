@@ -414,6 +414,18 @@ margin: 0 auto;
 	background: #FF7800;
 }
 
+.gcbbadge {
+	background: #D08BF5;
+}
+
+.htmlbadge {
+	background: #E44C27;
+}
+
+.cssbadge {
+	background: #663398;
+}
+
 a:has(.projectimg) {
 	margin-left: auto;
 	height: 256px;
