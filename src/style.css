@@ -251,7 +251,7 @@ margin: 0 auto;
 	font-family: iosevkaterm;
 	overflow: scroll;
 	box-sizing: border-box;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 .termgreen {
@@ -339,14 +339,14 @@ margin: 0 auto;
 
 .windowcontent:has(#projectwin) {
 	background: #0d1117;
-	padding: 20px;
+	padding: 24px;
+	padding-right: 0;
 }
 
 .projectbox {
 	border-top: 1px solid #2f353d;
 	border-bottom: 1px solid #2f353d;
 	margin-top: -1px;
-	padding: 24px 0;
 	display: flex;
 }
 
@@ -360,7 +360,7 @@ margin: 0 auto;
 	margin-bottom: 8px;
 	margin-top: 0;
 	padding-right: 32px;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .projectlink {
@@ -369,6 +369,7 @@ margin: 0 auto;
 	color: #4493f8;
 	text-decoration: none;
 	margin-bottom: 4px;
+	margin-top: 24px;
 }
 
 .ghlink {
@@ -380,9 +381,9 @@ margin: 0 auto;
 }
 
 .projectlang {
-	font-size: 14px;
+	font-size: 12px;
 	color: #9198a1;
-	margin-bottom: 0;
+	margin-bottom: 24px;
 	margin-top: auto;
 	display: flex;
 	flex-direction: row;
@@ -409,13 +410,19 @@ margin: 0 auto;
 	background: #f1e05a;
 }
 
+.kicadbadge {
+	background: #FF7800;
+}
+
 a:has(.projectimg) {
 	margin-left: auto;
+	height: 256px;
 }
 
 .projectimg {
-	height: 150px;
+	height: 100%;
 	image-rendering: auto;
+	mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
 }
 
 #projectwin {

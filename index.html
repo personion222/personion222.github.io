@@ -17,39 +17,15 @@
 		<main style="grid-template-columns: 120fr 120fr">
 			<div class="side" id="left" style="grid-template-rows: 90fr 110fr 40fr">
 				<div class="window">
-					<div class="windowbar">projects</div>
-					<div class="windowcontent">
-						<div id="projectwin">
-							<h1>projects</h1>
-							<div class="projectbox">
-								<div class="projecttext">
-									<a class="projectlink" href="https://github.com/personion222/particle-life-c" target="_blank">particle-life-c</a>
-									<p class="projectdesc">a (very basic) implementation of particle life built with c and raylib</p>
-									<div class="projectlang"><span class="langbadge cbadge"></span>C</div>
-								</div>
-
-								<a href="./assets/images/particle-life.gif" target="_blank">
-									<img src="./assets/images/particle-life.gif" style="object-fit: none; object-position: center" class="projectimg">
-								</a>
-							</div>
-
-							<div class="projectbox">
-								<div class="projecttext">
-									<a class="projectlink" href="https://github.com/personion222/plant-spec" target="_blank">plant-spec</a>
-									<p class="projectdesc">AgriSense: My 2026 Waterloo-Wellington Science and Engineering Fair (WWSEF) project, an autonomous plant-health sensing device and accompanying software</p>
-									<div class="projectlang"><span class="langbadge pythonbadge"></span>Python &nbsp;&nbsp;<span class="langbadge jsbadge"></span>Javascript</div>
-								</div>
-
-								<a href="./assets/images/agrisense.jpeg" target="_blank">
-									<img src="./assets/images/agrisense.jpeg" class="projectimg">
-								</a>
-							</div>
-						</div>
+					<div class="windowbartabs">
+						<div class="windowbar" id="whoami">Ghostty</div>
+						<div class="windowbar desel" id="contact">elsewhere on the interwebs</div>
 					</div>
+					<div class="windowcontent"></div>
 				</div>
 
 				<div class="window">
-					<div class="windowbar">desmos !! - Mozilla Firefox</div>
+					<div class="windowbar">desmos projects !! - Mozilla Firefox</div>
 					<div class="windowcontent">
 						<div id="calculator"></div>
 					</div>
@@ -100,11 +76,93 @@
 				</div>
 
 				<div class="window">
-					<div class="windowbartabs">
-						<div class="windowbar" id="whoami">Ghostty</div>
-						<div class="windowbar desel" id="contact">elsewhere on the interwebs</div>
+					<div class="windowbar">projects</div>
+					<div class="windowcontent">
+						<div id="projectwin">
+							<h1>projects</h1>
+							<div class="projectbox">
+								<div class="projecttext">
+									<a href="https://github.com/personion222/particle-life-c" target="_blank" class="projectlink" >particle-life-c</a>
+									<p class="projectdesc">
+										A (very basic) implementation of <a href="https://github.com/tom-mohr/particle-life-app" target="_blank" class="ghlink">particle life</a> built with c and raylib.<br>
+										Utilises spatial-grid based particle interaction for linear time complexity.<br>
+										Multicore parallel processing via OpenMP.
+									</p>
+									<div class="projectlang"><span class="langbadge cbadge"></span>C</div>
+								</div>
+
+								<a href="./assets/images/particle-life.gif" target="_blank">
+									<img src="./assets/images/particle-life.gif" style="object-fit: none; object-position: center" class="projectimg">
+								</a>
+							</div>
+
+							<div class="projectbox">
+								<div class="projecttext">
+									<a href="https://github.com/personion222/plant-spec" target="_blank" class="projectlink" >plant-spec</a>
+									<p class="projectdesc">
+										AgriSense: My 2026 WWSEF project<br>
+										Implements an OpenMV Cam STM32H7 board, an AS7265x multispectral light sensor, and a servo gimbal to autonomously detect plant health.<br>
+										Includes a web-based configuration and data analysis tool.
+									</p>
+									<div class="projectlang"><span class="langbadge pythonbadge"></span>Python &nbsp;&nbsp;<span class="langbadge jsbadge"></span>JavaScript</div>
+								</div>
+
+								<a href="./assets/images/agrisense.jpeg" target="_blank">
+									<img src="./assets/images/agrisense.jpeg" class="projectimg">
+								</a>
+							</div>
+
+							<div class="projectbox">
+								<div class="projecttext">
+									<a href="https://github.com/personion222/ripenet" target="_blank" class="projectlink" >ripenet</a>
+									<p class="projectdesc">
+										RipeNet: My 2024 WWSEF/CWSF project<br>
+										National silver medal winner!<br>
+										TensorFlow.js CNN-based tool for colourblind people to identify ripe and unripe bananas, a task made difficult by deuteranomaly (red-green colourblindness).<br>
+										<a href="https://personion222.github.io/ripenet-web/" target="_blank" class="ghlink">Live Demo</a> and
+										<a href="https://partner.projectboard.world/ysc/project/ripenet-using-machine-learning-to-help-the-colourblind" target="_blank" class="ghlink">ProjectBoard Page</a>
+									</p>
+									<div class="projectlang"><span class="langbadge pythonbadge"></span>Python &nbsp;&nbsp;<span class="langbadge jsbadge"></span>JavaScript</div>
+								</div>
+
+								<a href="./assets/images/ripenet.png" target="_blank">
+									<img src="./assets/images/ripenet.png" class="projectimg">
+								</a>
+							</div>
+
+							<div class="projectbox">
+								<div class="projecttext">
+									<a href="https://github.com/personion222/sumo-robot" target="_blank" class="projectlink" >sumo-robot</a>
+									<p class="projectdesc">
+										TEJ3MI final project: Autonomous sumo wrestling robot<br>
+										3D modeled in OnShape, PCB designed in KiCad.<br>
+										38 kHz infrared emitter and TSOP4038.<br>
+										Very compact, uses hinged forks to reduce ground clearance.
+										They also fold up during measurement to fit inside 8x8x8 inch box.
+									</p>
+									<div class="projectlang"><span class="langbadge kicadbadge"></span>KiCad</div>
+								</div>
+
+								<a href="./assets/images/sumo-robot.png" target="_blank">
+									<img src="./assets/images/sumo-robot.png" class="projectimg">
+								</a>
+							</div>
+
+							<div class="projectbox">
+								<div class="projecttext">
+									<a href="https://github.com/personion222/personion222.github.io" target="_blank" class="projectlink" >personion222.github.io</a>
+									<p class="projectdesc">
+										The website you're looking at right now!<br>
+										Built with vanilla JavaScript, HTML, CSS, and bundled with Vite.
+									</p>
+									<div class="projectlang"><span class="langbadge jsbadge"></span>JavaScript</div>
+								</div>
+
+								<a href="#" target="_blank">
+								</a>
+							</div>
+						</div>
 					</div>
-					<div class="windowcontent"></div>
 				</div>
 			</div>
 		</main>
@@ -128,8 +186,7 @@
 			<b># Hello, I'm Ananth (onion/personion/personion222)!</b><br>
 			<a href="https://partner.projectboard.world/ysc/project/ripenet-using-machine-learning-to-help-the-colourblind" target="_blank">CWSF Silver '24</a>,
 			<a href="https://www.desmos.com/art-2023#13;ceyyqvbpl1" target="_blank">Desmos Math Art contest winner '23</a><br>
-			I'm a high school student based in Waterloo, ON, Canada who loves building, creating, and designing new things.<br>
-			Feel free to look around this website to get to know me better :3<br><br>
+			I'm a high school student based in Waterloo, ON, Canada who loves building, creating, and designing new things.<br><br>
 			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ cat skills.md<br>
 			<b>### languages</b><br>
 			Python, JavaScript, HTML/CSS, C<br>
