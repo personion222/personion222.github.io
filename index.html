@@ -14,18 +14,42 @@
 			<p id="timestr" />
 		</div>
 
-		<main style="grid-template-columns: 90fr 150fr">
-			<div class="side" id="left" style="grid-template-rows: 80fr 120fr 40fr">
+		<main style="grid-template-columns: 120fr 120fr">
+			<div class="side" id="left" style="grid-template-rows: 90fr 110fr 40fr">
 				<div class="window">
-					<div class="windowbartabs">
-						<div class="windowbar" id="whoami">Ghostty (whoami)</div>
-						<div class="windowbar desel" id="contact">elsewhere on the interwebs</div>
+					<div class="windowbar">projects</div>
+					<div class="windowcontent">
+						<div id="projectwin">
+							<h1>projects</h1>
+							<div class="projectbox">
+								<div class="projecttext">
+									<a class="projectlink" href="https://github.com/personion222/particle-life-c" target="_blank">particle-life-c</a>
+									<p class="projectdesc">a (very basic) implementation of particle life built with c and raylib</p>
+									<div class="projectlang"><span class="langbadge cbadge"></span>C</div>
+								</div>
+
+								<a href="./src/assets/particle-life.gif" target="_blank">
+									<img src="./src/assets/particle-life.gif" style="object-fit: none; object-position: center" class="projectimg">
+								</a>
+							</div>
+
+							<div class="projectbox">
+								<div class="projecttext">
+									<a class="projectlink" href="https://github.com/personion222/plant-spec" target="_blank">plant-spec</a>
+									<p class="projectdesc">AgriSense: My 2026 Waterloo-Wellington Science and Engineering Fair (WWSEF) project, an autonomous plant-health sensing device and accompanying software</p>
+									<div class="projectlang"><span class="langbadge pythonbadge"></span>Python &nbsp;&nbsp;<span class="langbadge jsbadge"></span>Javascript</div>
+								</div>
+
+								<a href="./src/assets/agrisense.jpeg" target="_blank">
+									<img src="./src/assets/agrisense.jpeg" class="projectimg">
+								</a>
+							</div>
+						</div>
 					</div>
-					<div class="windowcontent"></div>
 				</div>
 
 				<div class="window">
-					<div class="windowbar">desmos !! - Firefox</div>
+					<div class="windowbar">desmos !! - Mozilla Firefox</div>
 					<div class="windowcontent">
 						<div id="calculator"></div>
 					</div>
@@ -40,7 +64,7 @@
 				</div>
 			</div>
 
-			<div class="side" id="right" style="grid-template-rows: 140fr 100fr">
+			<div class="side" id="right" style="grid-template-rows: 120fr 120fr">
 				<div class="window">
 					<div class="windowbar">eye of GNOME</div>
 					<div class="windowcontent">
@@ -76,46 +100,49 @@
 				</div>
 
 				<div class="window">
-					<div class="windowbar">projects</div>
-					<div class="windowcontent">
-						very cool owo
+					<div class="windowbartabs">
+						<div class="windowbar" id="whoami">Ghostty</div>
+						<div class="windowbar desel" id="contact">elsewhere on the interwebs</div>
 					</div>
+					<div class="windowcontent"></div>
 				</div>
 			</div>
 		</main>
-
-		<!--<script type="text/javascript">
-			var viewer = OpenSeadragon({
-				id: "openseadragon",
-				// prefixUrl: "/openseadragon/images/",
-				tileSources: "./assets/images/dzi/IMG_1661.dzi"
-			});
-		</script>-->
 	</body>
 
 	<template id="whoamitemp">
-		<div id="term">
-			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ whoami<br>
-			personion<br>
+		<div id="termwin">
 			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ neofetch<br>
 			<div id="fetchcont">
 				<img src="./src/assets/Untitled_Artwork.png" id="pfp">
 				<p id="fetchtxt">
-					personion@onion-web<br>
+					<b>personion@onion-web</b><br>
 					-------------------<br>
-					Name: Ananth Arunkumar<br>
-					Email: ananth2.718 (at) gmail (dot) com<br>
-					Resume: download<br>
-					Location: Ontario, Canada<br>
+					<b class="termlgreen">Name</b>: Ananth Arunkumar<br>
+					<b class="termlgreen">Email</b>: ananth2.718 (at) gmail (dot) com<br>
+					<b class="termlgreen">Resume</b>: <a href="#"><b class="termlgreen">download</b></a><br>
+					<b class="termlgreen">Location</b>: Ontario, Canada<br>
 				</p>
-			</div>
-			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ glow README.md<br>
-			# I'm Ananth, a high school student based in Canada who loves building, creating, and designing!
+			</div><br>
+			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ cat README.md<br>
+			<b># Hello, I'm Ananth (onion/personion/personion222)!</b><br>
+			<a href="https://partner.projectboard.world/ysc/project/ripenet-using-machine-learning-to-help-the-colourblind" target="_blank">CWSF Silver '24</a>,
+			<a href="https://www.desmos.com/art-2023#13;ceyyqvbpl1" target="_blank">Desmos Math Art contest winner '23</a><br>
+			I'm a high school student based in Waterloo, ON, Canada who loves building, creating, and designing new things.<br>
+			Feel free to look around this website to get to know me better :3<br><br>
+			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ cat skills.md<br>
+			<b>### languages</b><br>
+			Python, JavaScript, HTML/CSS, C<br>
+			<b>### libraries and frameworks</b><br>
+			TensorFlow, TensorFlow.js, OpenCV NumPy, Pandas,<br>
+			<b>### tools</b><br>
+			Linux, Bash, Desmos Graphing Calculator<br><br>
+			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ <span class="cursor">█</span>
 		</div>
 	</template>
 
 	<template id="contacttemp">
-		<div id="contactcont">
+		<div id="contactwin">
 			<div class="linkbox">
 				<img src="./src/assets/itch.png" class="linkimg padlogo">
 				<div class="linkdesc">
@@ -155,7 +182,15 @@
 	</template>
 
 	<template id="sitetemp">
-		looks like swaywm, thats abt it thx for coming to my ted talk
+		<div id="aboutwin">
+			<ul>
+				<li>this site is modeled to look like a <a href="https://swaywm.org/" target="_blank">Sway</a> Linux desktop!</li>
+				<li>hover over different tabs in windows to view pages</li>
+				<li>press ctrl+arrow keys to resize different windows</li>
+				<li>the colour palette is (mostly) based on the <a href="https://rosepinetheme.com/" target="_blank">rose pine</a> theme</li>
+				<i><li>search engine optimization? this website is optimized for human beings!</li></i>
+			</ul>
+		</div>
 	</template>
 
 	<template id="8831temp">
