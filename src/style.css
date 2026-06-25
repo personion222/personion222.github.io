@@ -287,7 +287,7 @@ margin: 0 auto;
 }
 
 #pfp {
-	height: 100px;
+	height: 15ch;
 }
 
 #fetchtxt {
@@ -348,6 +348,7 @@ margin: 0 auto;
 	border-bottom: 1px solid #2f353d;
 	margin-top: -1px;
 	display: flex;
+	font-size: 14px;
 }
 
 .projecttext {
@@ -360,7 +361,6 @@ margin: 0 auto;
 	margin-bottom: 8px;
 	margin-top: 0;
 	padding-right: 32px;
-	font-size: 14px;
 }
 
 .projectlink {
