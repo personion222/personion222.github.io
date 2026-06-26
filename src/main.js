@@ -133,11 +133,18 @@ document.getElementById("site").onmouseover = (event) => {
 	}
 }
 
-document.getElementById("8831").onmouseover = (event) => {
+document.getElementById("btn").onmouseover = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
-		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "8831temp");
+		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "btntemp");
+
+		document.getElementById("mybtn").onclick = () => {
+			navigator.clipboard.writeText(`
+				<a href="https://personion222.github.io/">
+					<img src="https://personion222.github.io/8831.png">
+				</a>`);
+		}
 	}
 }
 
