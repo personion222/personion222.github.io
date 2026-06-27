@@ -420,15 +420,15 @@ p {
 }
 
 .gcbbadge {
-	background: #D08BF5;
+	background: #3452FF;
 }
 
 .htmlbadge {
-	background: #E44C27;
+	background: #E54C21;
 }
 
 .cssbadge {
-	background: #663398;
+	background: #66309A;
 }
 
 a:has(.projectimg) {
@@ -460,6 +460,7 @@ a:has(.projectimg) {
 .btnlink > img {
 	width: 88px;
 	height: 31px;
+	image-rendering: pixelated;
 }
 
 #btnwin {

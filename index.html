@@ -15,7 +15,7 @@
 			<p id="timestr" />
 		</div>
 
-		<main style="grid-template-columns: 120fr 120fr">
+		<main style="grid-template-columns: 100fr 140fr">
 			<div class="side" id="left" style="grid-template-rows: 90fr 110fr 40fr">
 				<div class="window">
 					<div class="windowbartabs">
@@ -83,7 +83,7 @@
 							<h1>projects</h1>
 							<div class="projectbox">
 								<div class="projecttext">
-									<a href="https://github.com/personion222/particle-life-c" target="_blank" class="projectlink" >particle-life-c</a>
+									<a href="https://github.com/personion222/particle-life-c" target="_blank" class="projectlink">particle-life-c</a>
 									<p class="projectdesc">
 										A (very basic) implementation of <a href="https://github.com/tom-mohr/particle-life-app" target="_blank" class="ghlink">particle life</a> built with c and raylib.<br>
 										Utilises spatial-grid based particle interaction for linear time complexity.<br>
@@ -99,7 +99,7 @@
 
 							<div class="projectbox">
 								<div class="projecttext">
-									<a href="https://github.com/personion222/plant-spec" target="_blank" class="projectlink" >plant-spec</a>
+									<a href="https://github.com/personion222/plant-spec" target="_blank" class="projectlink">plant-spec</a>
 									<p class="projectdesc">
 										AgriSense: My 2026 WWSEF project<br>
 										Implements an OpenMV Cam STM32H7 board, an AS7265x multispectral light sensor, and a servo gimbal to autonomously detect plant health.<br>
@@ -115,11 +115,11 @@
 
 							<div class="projectbox">
 								<div class="projecttext">
-									<a href="https://github.com/personion222/ripenet" target="_blank" class="projectlink" >ripenet</a>
+									<a href="https://github.com/personion222/ripenet" target="_blank" class="projectlink">ripenet</a>
 									<p class="projectdesc">
 										RipeNet: My 2024 WWSEF/CWSF project<br>
 										National silver medal winner!<br>
-										TensorFlow.js CNN-based tool for colourblind people to identify ripe and unripe bananas, a task made difficult by deuteranomaly (red-green colourblindness).<br>
+										TensorFlow.js CNN-based tool for colourblind people to identify ripe and unripe bananas, a task made difficult by deuteranomaly (red-green colourblindness).
 										<a href="https://personion222.github.io/ripenet-web/" target="_blank" class="ghlink">Live Demo</a> and
 										<a href="https://partner.projectboard.world/ysc/project/ripenet-using-machine-learning-to-help-the-colourblind" target="_blank" class="ghlink">ProjectBoard Page</a>
 									</p>
@@ -133,13 +133,25 @@
 
 							<div class="projectbox">
 								<div class="projecttext">
-									<a href="https://github.com/personion222/sumo-robot" target="_blank" class="projectlink" >sumo-robot</a>
+									<a href="https://github.com/liub1606/evcSoftware/tree/main/public-telemetry" target="_blank" class="projectlink">telemetry-interface</a>
+									<p class="projectdesc">
+										Telemetry data terminal for the LHSS <a href="https://uwaterloo.ca/electric-vehicle-challenge/" target="_blank" class="ghlink">University of Waterloo Electric Vehicle Challenge</a> team.<br>
+										Replaced a legacy, non-interactive interface with a web application that can be accessed from multiple devices.
+									</p>
+									<div class="projectlang"><span class="langbadge pythonbadge"></span>Python &nbsp;&nbsp;<span class="langbadge jsbadge"></span>JavaScript</div>
+								</div>
+
+								<a href="./assets/images/evc-telem.png" target="_blank">
+									<img src="./src/assets/evc-telem-scale.jpeg" class="projectimg">
+								</a>
+							</div>
+
+							<div class="projectbox">
+								<div class="projecttext">
+									<a href="https://github.com/personion222/sumo-robot" target="_blank" class="projectlink">sumo-robot</a>
 									<p class="projectdesc">
 										TEJ3MI final project: Autonomous sumo wrestling robot<br>
 										3D modeled in OnShape, PCB designed in KiCad.<br>
-										38 kHz infrared emitter and TSOP4038.<br>
-										Very compact, uses hinged forks to reduce ground clearance.
-										They also fold up during measurement to fit inside an 8x8x8 inch box.
 									</p>
 									<div class="projectlang"><span class="langbadge kicadbadge"></span>KiCad &nbsp;&nbsp; <span class="langbadge gcbbadge"></span>GCBasic</div>
 								</div>
@@ -174,7 +186,7 @@
 			<span class="termgreen">personion@onion-web</span>:<span class="termgreen">~</span>$ neofetch<br>
 			<div id="fetchcont">
 				<a href="./assets/images/Untitled_Artwork.png" target="_blank">
-					<img src="./src/assets/pfp.png" id="pfp">
+					<img src="./src/assets/pfp.jpeg" id="pfp">
 				</a>
 				<p id="fetchtxt">
 					<b>personion@onion-web</b><br>
@@ -255,10 +267,8 @@
 
 	<template id="btntemp">
 		<div id="btnwin">
-			<p>other cool pages :3 (its a little empty for now)</p>
-
 			<a href="#" onclick="copy_embed();" id="mybtn">
-				<img src="https://personion222.github.io/8831.png">
+				<img src="./8831.png">
 				<p>button to this site, click to copy embed code</p>
 			</a>
 
@@ -267,6 +277,42 @@
 			<div id="btnls">
 				<a href="https://bomberfish.ca/?ref=button" referrerpolicy="unsafe-url" class="btnlink">
 					<img src="https://bomberfish.ca/button.gif" alt="BomberFish" title="BomberFish" />
+				</a>
+				<a href="https://eightyeightthirty.one/" class="btnlink">
+					<img src="./assets/buttons/88x31.png">
+				</a>
+				<a href="https://uni-mafumafu.jp/" class="btnlink">
+					<img src="./assets/buttons/mafumafu.gif">
+				</a>
+				<a href="#" class="btnlink">
+					<img src="./assets/buttons/mousepow.gif">
+				</a>
+				<a href="https://fedoraproject.org/" class="btnlink">
+					<img src="./assets/buttons/fedora.gif">
+				</a>
+				<a href="https://www.mozilla.org/" class="btnlink">
+					<img src="./assets/buttons/mozillanow.gif">
+				</a>
+				<a href="https://www.firefox.com/" class="btnlink">
+					<img src="./assets/buttons/firefox.gif">
+				</a>
+				<a href="https://www.gnu.org/" class="btnlink">
+					<img src="./assets/buttons/gnu.png">
+				</a>
+				<a href="https://www.nano-editor.org/" class="btnlink">
+					<img src="./assets/buttons/gnunano.gif">
+				</a>
+				<a href="https://www.gnu.org/gnu/linux-and-gnu.html" class="btnlink">
+					<img src="./assets/buttons/gnu-linux.gif">
+				</a>
+				<a href="https://www.gimp.org/" class="btnlink">
+					<img src="./assets/buttons/gimp.gif">
+				</a>
+				<a href="https://www.latex-project.org/" class="btnlink">
+					<img src="./assets/buttons/latex.gif">
+				</a>
+				<a href="https://www.ifixit.com/" class="btnlink">
+					<img src="./assets/buttons/rtr.jpg">
 				</a>
 			</div>
 		</div>
