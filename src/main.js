@@ -109,7 +109,7 @@ addEventListener("keydown", (event) => {
 	}
 })
 
-document.getElementById("whoami").onmouseover = (event) => {
+document.getElementById("whoami").onclick = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
@@ -117,7 +117,7 @@ document.getElementById("whoami").onmouseover = (event) => {
 	}
 }
 
-document.getElementById("contact").onmouseover = (event) => {
+document.getElementById("contact").onclick = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
@@ -125,7 +125,7 @@ document.getElementById("contact").onmouseover = (event) => {
 	}
 }
 
-document.getElementById("site").onmouseover = (event) => {
+document.getElementById("site").onclick = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
@@ -133,7 +133,7 @@ document.getElementById("site").onmouseover = (event) => {
 	}
 }
 
-document.getElementById("btn").onmouseover = (event) => {
+document.getElementById("btn").onclick = (event) => {
 	if (event.target.classList.contains("desel")) {
 		change_sel(event.target);
 		event.target.classList.remove("desel");
