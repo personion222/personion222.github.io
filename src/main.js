@@ -53,9 +53,15 @@ fetch("./assets/images/index.yaml").then(async (response) => {
 	load_photo(img_ids[img_idx]);
 })
 
+const overlay = document.getElementById("overlay");
+
+document.getElementById("overlaydismiss").onclick = (event) => {
+	overlay.classList.add("fade-out")
+}
+
 addEventListener("keydown", (event) => {
 	console.log(event.key);
-	if (event.ctrlKey) {
+	if (event.ctrlKey || true) {
 		let sel_window = document.querySelector(".window:hover");
 		if (sel_window) {
 			let side = sel_window.parentElement;
@@ -140,10 +146,7 @@ document.getElementById("btn").onclick = (event) => {
 		add_template(event.target.parentElement.parentElement.getElementsByClassName("windowcontent")[0], "btntemp");
 
 		document.getElementById("mybtn").onclick = () => {
-			navigator.clipboard.writeText(`
-				<a href="https://personion222.github.io/">
-					<img src="https://personion222.github.io/8831.png">
-				</a>`);
+			navigator.clipboard.writeText('<a href="https://personion222.github.io/"><img src="https://personion222.github.io/8831.png"></a>');
 		}
 	}
 }
@@ -208,3 +211,31 @@ function modulo(n, d){
 function randmaxint(int) {
 	return Math.floor(Math.random() * int);
 }
+
+function shuffle(arr) {
+	let idx = arr.length;
+
+	while (idx != 0) {
+		let rand_idx = Math.floor(Math.random() * idx);
+		idx--;
+		[arr[idx], arr[rand_idx]] = [arr[idx], arr[idx]];
+	}
+}
+
+// seizure mode:
+// const cursors = [
+// 	"alias", "all-scroll", "auto", "cell", "col-resize", "context-menu", "copy",
+// 	"crosshair", "default", "e-resize", "ew-resize", "grab", "grabbing", "help",
+// 	"move", "n-resize", "ne-resize", "nesw-resize", "ns-resize", "nw-resize",
+// 	"nwse-resize", "no-drop", "none", "not-allowed", "pointer", "progress",
+// 	"row-resize", "s-resize", "se-resize", "sw-resize", "text", "url",
+// 	"w-resize", "wait", "zoom-in", "zoom-out"
+// ];
+// shuffle(cursors);
+// var cursor_idx = 0;
+//
+// setInterval(() => {
+// 	document.body.style.cursor = cursors[cursor_idx];
+// 	cursor_idx ++;
+// 	cursor_idx %= cursors.length;
+// }, 100);

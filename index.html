@@ -9,13 +9,27 @@
 		<title>personion222</title>
 	</head>
 	<body>
+		<div id="overlay">
+			<div id="overlaybox">
+				Welcome to my website!
+				<ul>
+					<li>this site is modeled to look like a <a href="https://swaywm.org/" target="_blank">Sway</a> Linux desktop!</li>
+					<li><b>click</b> on different tabs in each "window" to view pages</li>
+					<li>press the <b>arrow keys</b> to resize different windows</li>
+				</ul>
+				<button autofocus id="overlaydismiss">
+					dismiss
+				</button>
+			</div>
+		</div>
+
 		<div id="topbar">
 			<div id="workspace">1</div>
 			<p id="title">personion222's desktop</p>
 			<p id="timestr" />
 		</div>
 
-		<main style="grid-template-columns: 100fr 140fr">
+		<main style="grid-template-columns: 120fr 120fr">
 			<div class="side" id="left" style="grid-template-rows: 45fr 110fr 90fr">
 				<div class="window">
 					<div class="windowbartabs">
@@ -26,7 +40,7 @@
 				</div>
 
 				<div class="window">
-					<div class="windowbar">desmos projects !! - Mozilla Firefox</div>
+					<div class="windowbar">my desmos projects</div>
 					<div class="windowcontent">
 						<div id="calculator"></div>
 					</div>
@@ -34,16 +48,16 @@
 
 				<div class="window">
 					<div class="windowbartabs">
-						<div class="windowbar" id="whoami">about me - Ghostty</div>
+						<div class="windowbar" id="whoami">about me</div>
 						<div class="windowbar desel" id="contact">elsewhere on the interwebs</div>
 					</div>
 					<div class="windowcontent"></div>
 				</div>
 			</div>
 
-			<div class="side" id="right" style="grid-template-rows: 120fr 120fr">
+			<div class="side" id="right" style="grid-template-rows: 100fr 140fr">
 				<div class="window">
-					<div class="windowbar">photography - eye of GNOME</div>
+					<div class="windowbar">my photography!</div>
 					<div class="windowcontent">
 						<div id="eogwin">
 							<div id="osdcontainer">
@@ -77,7 +91,7 @@
 				</div>
 
 				<div class="window">
-					<div class="windowbar">projects - GitHub</div>
+					<div class="windowbar">projects</div>
 					<div class="windowcontent">
 						<div id="projectwin">
 							<h1>projects</h1>
@@ -258,7 +272,7 @@
 			<ul>
 				<li>this site is modeled to look like a <a href="https://swaywm.org/" target="_blank">Sway</a> Linux desktop!</li>
 				<li><b>click</b> on different tabs in each "window" to view pages</li>
-				<li>press <b>ctrl+arrow keys</b> to resize different windows</li>
+				<li>press the <b>arrow keys</b> to resize different windows</li>
 				<i><li>search engine optimization? this website is optimized for human beings!</li></i>
 			</ul>
 		</div>
@@ -266,7 +280,7 @@
 
 	<template id="btntemp">
 		<div id="btnwin">
-			<a href="#" onclick="copy_embed();" id="mybtn">
+			<a href="#" id="mybtn">
 				<img src="./8831.png">
 				<p>button to this site, click to copy embed code</p>
 			</a>

@@ -3,6 +3,32 @@
 	src: url(./assets/fonts/iosevka-term-regular.woff2);
 }
 
+#overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(25, 23, 36, 0.8);
+	backdrop-filter: blur(25px);
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	font-weight: 100;
+	opacity: 1;
+	transition: opacity 1.5s ease-in-out, backdrop-filter 1s ease-in-out;
+}
+
+#overlay.fade-out {
+	opacity: 0;
+	backdrop-filter: blur(0);
+	pointer-events: none;
+}
+
+#overlaybox {
+	margin: 10%;
+}
+
 html {
 	height: 100%;
 }
@@ -17,13 +43,13 @@ body {
 	flex-direction: column;
 	gap: 2px;
 	overflow: hidden;
+	cursor: auto;
 }
 
 main {
 	display: grid;
 	grid-template-columns: 120fr 120fr;
 	flex: 1;
-	height: 1000px;
 	overflow: hidden;
 }
 
@@ -57,6 +83,26 @@ h1 {
 p {
 	margin: 0;
 	margin-bottom: 5px;
+}
+
+button {
+	font-size: inherit;
+	border-radius: 0;
+	border: 2px solid #ebbcba;
+	background: #1f1d2e;
+	padding: 5px 15px;
+	color: #e0def4;
+	font-family: monospace;
+	transition: 0.2s ease-out;
+	translate: 0;
+	cursor: pointer;
+	filter: drop-shadow(0 3px 0 black);
+}
+
+button:hover {
+	background: #26233a;
+	filter: drop-shadow(0 8px 0 black);
+	translate: 0 -1px;
 }
 
 .side {
@@ -478,7 +524,7 @@ a:has(.projectimg) {
 
 #mybtn {
 	display: flex;
-	gap: 5px;
+	gap: 15px;
 	align-items: end;
 	font-size: 12px;
 }
