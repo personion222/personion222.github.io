@@ -29,6 +29,26 @@
 	margin: 10%;
 }
 
+#overlaydismiss {
+	font-size: inherit;
+	border-radius: 0;
+	border: 2px solid #ebbcba;
+	background: #1f1d2e;
+	padding: 5px 15px;
+	color: #e0def4;
+	font-family: monospace;
+	transition: 0.2s ease-out;
+	translate: 0;
+	cursor: pointer;
+	filter: drop-shadow(0 3px 0 black);
+}
+
+#overlaydismiss:hover {
+	background: #26233a;
+	filter: drop-shadow(0 8px 0 black);
+	translate: 0 -1px;
+}
+
 html {
 	height: 100%;
 }
@@ -83,26 +103,6 @@ h1 {
 p {
 	margin: 0;
 	margin-bottom: 5px;
-}
-
-button {
-	font-size: inherit;
-	border-radius: 0;
-	border: 2px solid #ebbcba;
-	background: #1f1d2e;
-	padding: 5px 15px;
-	color: #e0def4;
-	font-family: monospace;
-	transition: 0.2s ease-out;
-	translate: 0;
-	cursor: pointer;
-	filter: drop-shadow(0 3px 0 black);
-}
-
-button:hover {
-	background: #26233a;
-	filter: drop-shadow(0 8px 0 black);
-	translate: 0 -1px;
 }
 
 .side {
