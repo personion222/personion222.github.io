@@ -1,3 +1,5 @@
+fetch("https://onion-fedora.oarfish-discus.ts.net/web-ping", {method: "POST"});
+
 import "./style.css";
 import exifr from "exifr";
 import js_yaml from "js-yaml";
@@ -56,7 +58,7 @@ fetch("./assets/images/index.yaml").then(async (response) => {
 const overlay = document.getElementById("overlay");
 
 document.getElementById("overlaydismiss").onclick = (event) => {
-	overlay.classList.add("fade-out")
+	overlay.classList.add("fade-out");
 }
 
 addEventListener("keydown", (event) => {
